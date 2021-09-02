@@ -1,0 +1,36 @@
+*{
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+/*o padrão fica 10px*/
+html{
+    font-size: 62.5%; 
+}
+
+/*usar cor como variável*/
+:root{
+    --darkBlue: #1B3C59;
+    --gray: #B0BFB5;
+    --lightPink: #F2D5BB;
+    --salmon: #F2A999;
+    --pink: #F28177;
+}
+
+/*estilizando o form*/
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+    max-width: 90%;
+}
+
+input{
+    width: 100%;
+}
+
+#imagemUsuario{
+    width: 90%;
+}

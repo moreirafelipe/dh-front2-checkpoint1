@@ -4,25 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--Linkar CSS-->
+    <link rel="stylesheet" href="../css/style.css">
     <title>Document</title>
 </head>
 <body>
-    <form action="get">
+    <form>
+
        <!--Div do nome-->
         <div>
-            <label for="">Nome Completo</label>
-            <input type="text" name="" id="" placeholder="Digite seu nome!">
+            <label for="nome">Nome Completo</label>
+            <br>
+            <input type="text" name="nome" id="campoNome" placeholder="Digite seu nome!">
         </div>
+
         <!--Div do email-->
         <div>
-            <label for="">E-mail</label>
-            <input type="email" name="" id="" placeholder="aaaaaaa@aaaaa.com">
+            <label for="email">E-mail</label>
+            <br>
+            <input type="email" name="email" id="campoEmail" placeholder="aaaaaaa@aaaaa.com">
         </div>
+
         <!--div do perfil-->
         <div>
-            <label for="">Perfil</label>
-            <select name="" id="">
+            <label for="perfil">Perfil</label>
+            <select name="perfil" id="opcoesPerfil">
                 <option value="">Montanha</option>
                 <option value="">Praia</option>
                 <option value="">Negócios</option>
@@ -30,29 +35,39 @@
                 <option value="">Cultural</option>
             </select>
         </div>
+
         <!--div imagem-->
         <div>
             <input type="url"> <!--url da imagem-->
-            <div>
-                <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.melhoresdestinos.com.br%2Fmelhores-praias-do-brasil.html&psig=AOvVaw3fQwc-OSWM45nh8-5if9Yx&ust=1630589202934000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCLjx_qPw3fICFQAAAAAdAAAAABAD" alt="">
+            <div >
+                <img id="imagemUsuario" src="https://www.penaestrada.blog.br/wp-content/uploads/2019/05/rio-de-janeiro.jpg" alt="">
             </div>
         </div>
+
         <!--Marcar viagem-->
         <div>
-            <label for="">data da viagem</label>
+            <label for="" id="dataViagem">data da viagem</label>
             <input type="date">
         </div>
 
         <!--Observações sobre a viagem-->
         <div>
-            <input type="text" placeholder="Observações">
+            <h3>Digite aqui seu comentário</h3>
+            <textarea name="" id="" cols="30" rows="10" maxlength="150"></textarea>
         </div>
 
         <!--Botões-->
         <div>
-            <button type="submit">Enviar</button>
-            <button type="reset">Cancelar</button>
+            <button type="submit" id="botaoEnviar">Enviar</button>
+            <button type="reset" id="botaoCancelar">Cancelar</button>
         </div>
     </form>
+
+    <!--Cards-->
+    <section id="cards">
+
+    </section>
+
+    <script src="../js/app.js"></script>
 </body>
 </html>
