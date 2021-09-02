@@ -23,14 +23,20 @@ form{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 0 auto;
-    max-width: 90%;
+    align-items: stretch;
+    margin: 3rem auto;
+    max-width: 90%; 
 }
 
-input{
+
+
+input, select, img{
     width: 100%;
+    margin: 1rem 0;
+    padding: .7rem;
 }
 
 #imagemUsuario{
-    width: 90%;
+    width: 100%;
+
 }
