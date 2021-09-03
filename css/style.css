@@ -2,6 +2,9 @@
     padding: 0;
     border: 0;
     box-sizing: border-box;
+    /*fontes*/
+    font-family: 'Caveat', cursive;
+    font-family: 'Lemonada', cursive;
 }
 
 /*o padrão fica 10px*/
@@ -28,15 +31,29 @@ form{
     max-width: 90%; 
 }
 
+/*cor do body*/
+body{
+    background-color: var(--darkBlue);
+}
 
+::placeholder{
+    color: var(--salmon);
+}
 
 input, select, img{
     width: 100%;
     margin: 1rem 0;
     padding: .7rem;
+    font-size: 1.5rem;
+    background-color: var(--darkBlue);
+    color: var(--salmon);
 }
 
+label, h3{
+    font-size: 2rem;
+    color: var(--lightPink);
+}
 #imagemUsuario{
     width: 100%;
-
+    border-radius: 15%;
 }
