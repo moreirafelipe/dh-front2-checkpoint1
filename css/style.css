@@ -40,7 +40,9 @@ body{
     color: var(--salmon);
 }
 
-input, select, img{
+/* FAVOR ESPECIFICAR QUAL IMG IRÁ SER ESTILAZADA PARA NÃO MODIFICAR OS OUTROS ELEMENTOS */
+/* REMOVI O IMG DOS SELECIONADO ABAIXO - Peter*/
+input, select{
     width: 100%;
     margin: 1rem 0;
     padding: .7rem;
@@ -53,7 +55,19 @@ label, h3{
     font-size: 2rem;
     color: var(--lightPink);
 }
-#imagemUsuario{
+
+
+/* AREA DO PERFIL DA VIAGEM */
+/* TODO: DECIDIR O TAMANHO DA IMG */
+.preview {
+    border: solid 3px pink;
+    height: 300px;
+    height: 300px;
+}
+
+#userImg{
     width: 100%;
-    border-radius: 15%;
+    height: 100%;
+    /* object-fit: cover; */
+    /* overflow: hidden; */
 }
