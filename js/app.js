@@ -4,6 +4,8 @@ const inputs = document.querySelectorAll('input')
 const comentario = document.querySelector("textarea")
 //peguei o botao enviar pelo ID
 const botaoEnviar = document.getElementById("botaoEnviar")
+//selecionando elemento calendario
+let calendar = document.getElementById("calendar");
 
 //Função para manipulação de dados dos campos do formulário ao carregar a página
 window.onload = _ => {
@@ -22,8 +24,6 @@ window.onload = _ => {
 
     let minDate= year+"-"+month+"-"+day;
 /*    Teste para definição de periodo personalizado: let maxDate= year+"-"+month+"-"+30; */
-
-    let calendar = document.getElementById("calendar");
     calendar.setAttribute("min", minDate)
 /*  Teste para definição de periodo personalizado: calendar.setAttribute("max", maxDate) */
     calendar.value=minDate
