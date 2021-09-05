@@ -61,7 +61,7 @@ label, h3{
 /* TODO: DECIDIR O TAMANHO DA IMG */
 .preview {
     border: solid 3px pink;
-    height: 300px;
+    width: 500px;
     height: 300px;
 }
 
