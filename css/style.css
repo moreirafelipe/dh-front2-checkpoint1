@@ -1,7 +1,17 @@
+<<<<<<< HEAD
 * {
   padding: 0;
   border: 0;
   box-sizing: border-box;
+=======
+*{
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+    /*fontes*/
+    font-family: 'Caveat', cursive;
+    font-family: 'Lemonada', cursive;
+>>>>>>> ab8ad5f346c5bb097fabdda847a44177f12ad761
 }
 
 /*o padrão fica 10px*/
@@ -19,6 +29,7 @@ html {
 }
 
 /*estilizando o form*/
+<<<<<<< HEAD
 form {
   display: flex;
   flex-direction: column;
@@ -33,4 +44,54 @@ input {
 
 #imagemUsuario {
   width: 90%;
+=======
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    margin: 3rem auto;
+    max-width: 90%; 
+}
+
+/*cor do body*/
+body{
+    background-color: var(--darkBlue);
+}
+
+::placeholder{
+    color: var(--salmon);
+}
+
+/* FAVOR ESPECIFICAR QUAL IMG IRÁ SER ESTILAZADA PARA NÃO MODIFICAR OS OUTROS ELEMENTOS */
+/* REMOVI O IMG DOS SELECIONADO ABAIXO - Peter*/
+input, select{
+    width: 100%;
+    margin: 1rem 0;
+    padding: .7rem;
+    font-size: 1.5rem;
+    background-color: var(--darkBlue);
+    color: var(--salmon);
+}
+
+label, h3{
+    font-size: 2rem;
+    color: var(--lightPink);
+}
+
+
+/* AREA DO PERFIL DA VIAGEM */
+/* TODO: DECIDIR O TAMANHO DA IMG */
+.preview {
+    border: solid 3px pink;
+    width: 500px;
+    height: 300px;
+}
+
+#userImg{
+    width: 100%;
+    height: 100%;
+    /* object-fit: cover; */
+    /* overflow: hidden; */
+>>>>>>> ab8ad5f346c5bb097fabdda847a44177f12ad761
 }

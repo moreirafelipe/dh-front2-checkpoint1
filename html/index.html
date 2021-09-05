@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
     <title>Document</title>
+    <!--Linkei fonte-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Lemonada:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -15,36 +19,32 @@
         <!--Div do nome-->
         <div>
             <label for="nome">Nome Completo</label>
-            <br>
-            <input type="text" name="nome" id="campoNome" placeholder="Digite seu nome!">
+            <input type="text" name="nome" id="campoNome" placeholder="Digite seu nome">
         </div>
 
         <!--Div do email-->
         <div>
             <label for="email">E-mail</label>
-            <br>
-            <input type="email" name="email" id="campoEmail" placeholder="aaaaaaa@aaaaa.com">
+            <input type="email" name="email" id="campoEmail" placeholder="Digite seu email">
         </div>
 
         <!--div do perfil-->
-        <div>
+        <div id="perfilContainer">
             <label for="perfil">Perfil</label>
-            <select name="perfil" id="opcoesPerfil">
-                <option value="">Montanha</option>
-                <option value="">Praia</option>
-                <option value="">Negócios</option>
-                <option value="">Campo</option>
-                <option value="">Cultural</option>
+            <select name="perfil" id="perfil">
+                <option value="" selected>Selecione um perfil</option>
+                <option value="montanha">Montanha</option>
+                <option value="praia">Praia</option>
+                <option value="frio">Frio</option>
+                <option value="eco">Ecoturismo</option>
+                <option value="historico">Histórico</option>
+                <option value="outro">Outro</option>
             </select>
         </div>
 
         <!--div imagem-->
-        <div>
-            <input type="url">
-            <!--url da imagem-->
-            <div>
-                <img id="imagemUsuario" src="https://www.penaestrada.blog.br/wp-content/uploads/2019/05/rio-de-janeiro.jpg" alt="">
-            </div>
+        <div class="preview">
+            <img id="userImg" src="/assets/mala.jpeg" alt="">
         </div>
 
         <!--Marcar viagem-->

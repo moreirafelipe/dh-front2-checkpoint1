@@ -5,14 +5,14 @@ const comentario = document.querySelector("textarea")
 //peguei o botao enviar pelo ID
 const botaoEnviar = document.getElementById("botaoEnviar")
 
-//Funções para manipulação de dados dos campos do formulário ao carregar a página
-
+//Função para manipulação de dados dos campos do formulário ao carregar a página
 window.onload = _ => {
 
     let today = new Date()
 
     let year = today.getFullYear();
-    let month = today.getMonth();
+    /* Definindo getMonth() + 1 pois, o método returna os meses a partir do index 0 */
+    let month = today.getMonth()+1;
     let day = today.getDate();
 
     day < 10 ? day = '0'+ day : null;
@@ -29,19 +29,15 @@ window.onload = _ => {
 }
 
 //função para verificação se está vazio
-/* botaoEnviar.addEventListener("click", (event)=>{//event recebe o click
+botaoEnviar.addEventListener("click", (event) => {//event recebe o click
     inputs.forEach(element => {
-        if(element.value == ""){
-            event.preventDefault() */
+        if (element.value == "") {
+            event.preventDefault()
             // alert("Preencha corretamente") decidir o que vamos fazer, se vai ser div, texto, etc...
             //pode ser um createelement, appendchild e depois um p
-/*         }
-})}) */
-
-/* console.log("Hoje é " + now.getDate()); */
-/* calendar.setAttribute("min", "2021-09-11");
-calendar.setAttribute("max", minDate); */
-/* calendar.setAttribute("min", "07-09-2021") */
+        }
+    })
+})
 
 //função para limitar a quantidade de caracteres
 // comentario.addEventListener("keyup", (event)=>{
@@ -56,3 +52,24 @@ calendar.setAttribute("max", minDate); */
 // console.log(Date().toString())
 
 //adicionar contador regressivo na textarea
+
+//PERFIL
+const perfil = document.getElementById('perfil');
+const userImg = document.getElementById('userImg')
+
+//TODO: CONSERTAR O ERRO QUE CRUIA VARIOS INPUTS QUANDO 'OUTROS' é selecionado
+//TODO: Ajustar o ALT
+perfil.addEventListener('change', event => {
+    let element = event.target.value
+
+    if (element == 'outro') {
+        // const novoPerfil = document.createElement('input')
+        //     novoPerfil.placeholder = 'Digite o perfil'
+        //     novoPerfil.id = 'novoPerfil'
+        //     document.getElementById('perfilContainer').appendChild(novoPerfil)
+    }
+    else if (element != '') {
+        userImg.src = `/assets/${element}.jpg`
+        userImg.alt = `Fotografia de uma viagem à ${element}`
+    }
+})
