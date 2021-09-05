@@ -1,0 +1,5 @@
+Checkpoint
+
+Form: lider do grupo
+Readme: Constar formação do grupo
+Wireframe: alta fidelidade - destacar: tags (elementos de toda a página), dimensões e estilos

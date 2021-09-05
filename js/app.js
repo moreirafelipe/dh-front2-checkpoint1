@@ -5,15 +5,43 @@ const comentario = document.querySelector("textarea")
 //peguei o botao enviar pelo ID
 const botaoEnviar = document.getElementById("botaoEnviar")
 
+//Funções para manipulação de dados dos campos do formulário ao carregar a página
+
+window.onload = _ => {
+
+    let today = new Date()
+
+    let year = today.getFullYear();
+    let month = today.getMonth();
+    let day = today.getDate();
+
+    day < 10 ? day = '0'+ day : null;
+    month < 10 ? month = '0'+ month : null;
+
+    let minDate= year+"-"+month+"-"+day;
+/*     let maxDate= year+"-"+month+"-"+30; */
+
+    let calendar = document.getElementById("calendar");
+    calendar.setAttribute("min", minDate)
+/*     calendar.setAttribute("max", maxDate) */
+    calendar.value=minDate
+    console.log(calendar);
+}
+
 //função para verificação se está vazio
-botaoEnviar.addEventListener("click", (event)=>{//event recebe o click
+/* botaoEnviar.addEventListener("click", (event)=>{//event recebe o click
     inputs.forEach(element => {
         if(element.value == ""){
-            event.preventDefault()
+            event.preventDefault() */
             // alert("Preencha corretamente") decidir o que vamos fazer, se vai ser div, texto, etc...
             //pode ser um createelement, appendchild e depois um p
-        }
-})})
+/*         }
+})}) */
+
+/* console.log("Hoje é " + now.getDate()); */
+/* calendar.setAttribute("min", "2021-09-11");
+calendar.setAttribute("max", minDate); */
+/* calendar.setAttribute("min", "07-09-2021") */
 
 //função para limitar a quantidade de caracteres
 // comentario.addEventListener("keyup", (event)=>{
