@@ -8,6 +8,7 @@ const botaoEnviar = document.getElementById("botaoEnviar")
 //Função para manipulação de dados dos campos do formulário ao carregar a página
 window.onload = _ => {
 
+    /* Ajustando data inicial do calentádio */
     let today = new Date()
 
     let year = today.getFullYear();
@@ -15,15 +16,16 @@ window.onload = _ => {
     let month = today.getMonth()+1;
     let day = today.getDate();
 
+    /* Adiciona 0 na frente de numeros menores que 10*/
     day < 10 ? day = '0'+ day : null;
     month < 10 ? month = '0'+ month : null;
 
     let minDate= year+"-"+month+"-"+day;
-/*     let maxDate= year+"-"+month+"-"+30; */
+/*    Teste para definição de periodo personalizado: let maxDate= year+"-"+month+"-"+30; */
 
     let calendar = document.getElementById("calendar");
     calendar.setAttribute("min", minDate)
-/*     calendar.setAttribute("max", maxDate) */
+/*  Teste para definição de periodo personalizado: calendar.setAttribute("max", maxDate) */
     calendar.value=minDate
     console.log(calendar);
 }
