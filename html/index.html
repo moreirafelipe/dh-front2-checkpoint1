@@ -14,64 +14,65 @@
 </head>
 
 <body>
-    <form>
-
-        <!--Div do nome-->
-        <div>
-            <label for="nome">Nome Completo</label>
-            <input type="text" name="nome" id="campoNome" placeholder="Digite seu nome">
-        </div>
-
-        <!--Div do email-->
-        <div>
-            <label for="email">E-mail</label>
-            <input type="email" name="email" id="campoEmail" placeholder="Digite seu email">
-        </div>
-
-        <!--div do perfil-->
-        <div id="perfilContainer">
-            <label for="perfil">Perfil</label>
-            <select name="perfil" id="perfil">
-                <option value="" selected>Selecione um perfil</option>
-                <option value="montanha">Montanha</option>
-                <option value="praia">Praia</option>
-                <option value="frio">Frio</option>
-                <option value="eco">Ecoturismo</option>
-                <option value="historico">Histórico</option>
-                <option value="outro">Outro</option>
-            </select>
-        </div>
-
-        <!--div imagem-->
-        <div class="preview">
-            <img id="userImg" src="/assets/mala.jpeg" alt="">
-        </div>
-
-        <!--Marcar viagem-->
-        <div>
-            <label for="" id="dataViagem">data da viagem</label>
-            <input type="date" id="calendar">
-        </div>
-
-        <!--Observações sobre a viagem-->
-        <div>
-            <h3>Digite aqui seu comentário</h3>
-            <textarea name="" id="" cols="30" rows="10" maxlength="150"></textarea>
-        </div>
-
-        <!--Botões-->
-        <div>
-            <button type="submit" id="botaoEnviar">Enviar</button>
-            <button type="reset" id="botaoCancelar">Cancelar</button>
-        </div>
-    </form>
-
-    <!--Cards-->
-    <section id="cards">
-
-    </section>
-
+    <main> <!-- coloquei toda a página dentro do main - Dâmares -->
+        <section id="sectionForm"> <!-- coloquei o formulário dentro de uma section - Dâmares-->
+            <form>
+                <!--Div do nome-->
+                <div>
+                    <label for="nome">Nome Completo</label>
+                    <input type="text" name="nome" id="campoNome" placeholder="Digite seu nome">
+                </div>
+        
+                <!--Div do email-->
+                <div>
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" id="campoEmail" placeholder="Digite seu email">
+                </div>
+        
+                <!--div do perfil-->
+                <div id="perfilContainer">
+                    <label for="perfil">Perfil</label>
+                    <select name="perfil" id="perfil">
+                        <option value="" selected>Selecione um perfil</option>
+                        <option value="montanha">Montanha</option>
+                        <option value="praia">Praia</option>
+                        <option value="frio">Frio</option>
+                        <option value="eco">Ecoturismo</option>
+                        <option value="historico">Histórico</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+        
+                <!--div imagem-->
+                <div class="preview">
+                    <img id="userImg" src="../assets/mala.jpeg" alt="">
+                </div>
+        
+                <!--Marcar viagem-->
+                <div>
+                    <label for="" id="dataViagem">Data da viagem</label>
+                    <input type="date" id="calendar">
+                </div>
+        
+                <!--Observações sobre a viagem-->
+                <div>
+                    <h3>Digite aqui seu comentário</h3>
+                    <textarea name="" id="" cols="30" rows="5" maxlength="150"></textarea>
+                </div>
+        
+                <!--Botões-->
+                <div class="btn">
+                    <button type="submit" id="botaoEnviar">Enviar</button>
+                    <button type="reset" id="botaoCancelar">Cancelar</button>
+                </div>
+            </form>
+        </section>
+    
+        <!--Cards-->
+        <section id="cards">
+    
+        </section>
+    </main>
     <script src="../js/app.js"></script>
 </body>
-
 </html>
