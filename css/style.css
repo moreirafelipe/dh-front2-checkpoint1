@@ -95,6 +95,12 @@ h3 {
   color: var(--lightPink);
 }
 
+/* ACRESCENTEI - FELIPE - 07/09 */
+#calendar {
+  background: url("../img/calendar.svg") no-repeat center right;
+  background-size: 3rem;
+} /* FIM ACRESCENTEI - FELIPE - 07/09 */
+
 /* AREA DO PERFIL DA VIAGEM */
 /* TODO: DECIDIR O TAMANHO DA IMG */
 .preview {
