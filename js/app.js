@@ -11,6 +11,7 @@ let divCards = document.getElementById("cards")
 //selecionar o numero de caracteres da textarea
 let divCaracteres = document.getElementById("numCaracteres");
 
+let arrayObjetos = [];
 
 /* INICIO: ATUALIZEI EM 07/09 - FELIPE */
 //propriedade para executar quaisquer funções ao carregar a página
@@ -20,27 +21,28 @@ window.onload = _ => {
 
     let obj = JSON.parse(localStorage.getItem('card'));
 
-        obj.forEach(element, _ => {
+    obj.forEach((element) => {
 
-        const card = document.createElement("div");
-        card.setAttribute("class", "cards")
+    const card = document.createElement("div");
+    card.setAttribute("class", "cards")
 
-        const title = document.createElement("h2");
-        title.setAttribute("class", "tituloCard")
-        title.innerHTML = perfil.value
+    const title = document.createElement("h2");
+    title.setAttribute("class", "tituloCard")
+    title.innerHTML = element.titulo
 
-        const img = document.createElement("img")
-        img.setAttribute("src", userImg.src)
+    const img = document.createElement("img")
+    img.setAttribute("src", element.imagem)
+    
 
-        const text = document.createElement("p");
-        text.setAttribute("class", "paragCard")
-        text.innerHTML = comentario.value
-        
-        card.appendChild(title)
-        card.appendChild(img)
-        card.appendChild(text)
-        
-        divCards.appendChild(card)
+    const text = document.createElement("p");
+    text.setAttribute("class", "paragCard")
+    text.innerHTML = element.comentario
+    
+    card.appendChild(title)
+    card.appendChild(img)
+    card.appendChild(text)
+    
+    divCards.appendChild(card)
 
     });
 }
@@ -135,8 +137,6 @@ perfil.addEventListener('change', event => {
     }
 })
 
-let arrayObjetos = [];
-
 /* Criar cards - 07/09 - Dâmares */
 botaoEnviar.addEventListener('click', function(event){
     event.preventDefault();
@@ -161,9 +161,19 @@ botaoEnviar.addEventListener('click', function(event){
     
     divCards.appendChild(card)
 
-    let obj = {titulo: perfil.value, imagem: userImg, comentario: comentario.value};
+    let obj = {titulo: perfil.value, imagem: userImg.src, comentario: comentario.value};
 
-    arrayObjetos.push(obj);
+    if(localStorage.length == 0) {
+
+        arrayObjetos.push(obj);
+
+    } else {
+        let getObj = JSON.parse(localStorage.getItem('card'));
+        arrayObjetos.push(getObj);
+        arrayObjetos.push(obj);
+    }
+
+    /* console.log(arrayObjetos) */
 
     localStorage.setItem('card', JSON.stringify(arrayObjetos));
 
