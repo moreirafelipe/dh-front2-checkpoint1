@@ -22,6 +22,29 @@ window.onload = _ => {
 
 //Funções gerais
 
+const criarCards = (titulo, imrUrl, comentario) => {
+
+    const card = document.createElement("div");
+    card.setAttribute("class", "cards")
+
+    const title = document.createElement("h2");
+    title.setAttribute("class", "tituloCard")
+    title.innerHTML = titulo
+
+    const img = document.createElement("img")
+    img.setAttribute("src", imrUrl)
+
+    const text = document.createElement("p");
+    text.setAttribute("class", "paragCard")
+    text.innerHTML = comentario
+    
+    card.appendChild(title)
+    card.appendChild(img)
+    card.appendChild(text)
+    
+    divCards.appendChild(card)
+}
+
 //Função para recuperar dados do usuario ao fechar página
 const mantemCards = () => {
 
@@ -29,28 +52,10 @@ const mantemCards = () => {
 
     obj.forEach((element) => {
 
-        const card = document.createElement("div");
-        card.setAttribute("class", "cards")
+        /* Chamando função para criar os cards com dados recuperados do localStorage*/
+        criarCards(element.titulo, element.imagem, element.comentario);
 
-        const title = document.createElement("h2");
-        title.setAttribute("class", "tituloCard")
-        title.innerHTML = element.titulo
-
-        const img = document.createElement("img")
-        img.setAttribute("src", element.imagem)
-        
-
-        const text = document.createElement("p");
-        text.setAttribute("class", "paragCard")
-        text.innerHTML = element.comentario
-        
-        card.appendChild(title)
-        card.appendChild(img)
-        card.appendChild(text)
-        
-        divCards.appendChild(card)
-
-    });    
+    });
 }
 
 //Função para criar calendário e ajustar sua data atual
@@ -147,25 +152,8 @@ perfil.addEventListener('change', event => {
 botaoEnviar.addEventListener('click', function(event){
     event.preventDefault();
 
-    const card = document.createElement("div");
-    card.setAttribute("class", "cards")
-
-    const title = document.createElement("h2");
-    title.setAttribute("class", "tituloCard")
-    title.innerHTML = perfil.value
-
-    const img = document.createElement("img")
-    img.setAttribute("src", userImg.src)
-
-    const text = document.createElement("p");
-    text.setAttribute("class", "paragCard")
-    text.innerHTML = comentario.value
-    
-    card.appendChild(title)
-    card.appendChild(img)
-    card.appendChild(text)
-    
-    divCards.appendChild(card)
+    /* Chamando função para criar os cards */
+    criarCards(perfil.value, userImg.src, comentario.value);
 
     /* Definindo array local temporário para ser inicicializado a cada inserção de card */
     let arrayObjetos = [];
