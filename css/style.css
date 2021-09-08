@@ -54,7 +54,7 @@ select {
   color: var(--salmon);
   /* DAQUI P/ BAIXO ACRESCENTEI EM 05/09 - DÃMARES */
   border: none;
-  border-bottom: 1px solid var(--lightPink);
+  border-bottom: .1rem solid var(--lightPink);
   outline: none;
 }
 
@@ -66,9 +66,9 @@ textarea{
   font-size: 1.5rem;
   background-color: var(--darkBlue);
   color: var(--salmon);
-  padding: 10px;
+  padding: 1rem;
   border: none;
-  border-bottom: 1px solid var(--lightPink);
+  border-bottom: .1rem solid var(--lightPink);
   outline: none; 
   resize: none;
 }
@@ -85,7 +85,7 @@ textarea:hover {
   color: white;
   font-size: 1.3rem;
   text-align: right;
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
 }
 
 
@@ -104,9 +104,9 @@ h3 {
 /* AREA DO PERFIL DA VIAGEM */
 /* TODO: DECIDIR O TAMANHO DA IMG */
 .preview {
-  border: solid 2px var(--lightPink);
+  border: solid .2rem var(--lightPink);
   width: 100%;
-  height: 300px;
+  height: 30rem;
   /* desabilitei essa configuração abaixo em px pq estava fazendo a div ficar fora de enquadramento
     na página e coloquei em porcentagem - Dâmares 05/09 */
   /* width: 500px;*/
@@ -122,11 +122,11 @@ h3 {
 /* ACRESCENTEI EM 05/09 - DÃMARES */
 /* botões */
 button {
-  width: 80px;
-  padding: 8px;
-  margin: 3px;
+  width: 8rem;
+  padding: .8rem;
+  margin: .3rem;
   border-style: none;
-  border-radius: 5px;
+  border-radius: .5rem;
   background-color: var(--salmon);
   color: var(--darkBlue);
 }
@@ -154,19 +154,19 @@ section#cards{
   flex-direction: column;
   background-color: #f7e9dd;
   width: 85%;
-  height: 450px;
-  margin: 10px;
-  padding: 15px;
+  height: 45rem;
+  margin: 1rem;
+  padding: 1.5rem;
   font-size: 1.5rem;
-  border-radius: 6px;
-  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1) ;
+  border-radius: .6rem;
+  box-shadow: .2rem .2rem .2rem .1rem rgba(0, 0, 0, 0.1) ;
 }
 .tituloCard{
   text-align: center;
 }
 .paragCard{
-  max-width: 300px;
-  padding-top: 15px;
+  max-width: 30rem;
+  padding-top: 1.5rem;
 } 
 
 
@@ -206,8 +206,8 @@ section#cards{
     width: 60%;
   }
   .cards{
-    width: 300px;
-    height: 410px;
+    width: 30rem;
+    height: 41rem;
   }
 }
 
@@ -223,7 +223,7 @@ section#cards{
     width: 70%;
   }
   .cards{
-    width: 350px;
-    height: 450px;
+    width: 35rem;
+    height: 45rem;
   }
 }
