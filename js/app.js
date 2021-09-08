@@ -21,7 +21,7 @@ window.onload = _ => {
 }
 
 //Funções gerais
-
+//Função que cria cards e mantem cards - ATUALIZEI - 08/09 - FELIPE
 const criarCards = (titulo, imrUrl, comentario) => {
 
     const card = document.createElement("div");
@@ -56,7 +56,7 @@ const mantemCards = () => {
         criarCards(element.titulo, element.imagem, element.comentario);
 
     });
-}
+}//FIM - Função que cria cards e mantem cards - ATUALIZEI - 08/09 - FELIPE
 
 //Função para criar calendário e ajustar sua data atual
 const defineCalendario = _ => {
