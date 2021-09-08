@@ -18,6 +18,31 @@ window.onload = _ => {
 
     defineCalendario();
 
+    let obj = JSON.parse(localStorage.getItem('card'));
+
+        obj.forEach(element, _ => {
+
+        const card = document.createElement("div");
+        card.setAttribute("class", "cards")
+
+        const title = document.createElement("h2");
+        title.setAttribute("class", "tituloCard")
+        title.innerHTML = perfil.value
+
+        const img = document.createElement("img")
+        img.setAttribute("src", userImg.src)
+
+        const text = document.createElement("p");
+        text.setAttribute("class", "paragCard")
+        text.innerHTML = comentario.value
+        
+        card.appendChild(title)
+        card.appendChild(img)
+        card.appendChild(text)
+        
+        divCards.appendChild(card)
+
+    });
 }
 
 //Funções gerais
@@ -110,17 +135,11 @@ perfil.addEventListener('change', event => {
     }
 })
 
-
+let arrayObjetos = [];
 
 /* Criar cards - 07/09 - Dâmares */
 botaoEnviar.addEventListener('click', function(event){
     event.preventDefault();
-
-    //INICIO: ATUALIZEI EM 08/09 - DUYLLYAN
-    //zerando o contador do textarea
-    comentario.value = "";
-    divCaracteres.innerHTML = comentario.value.length + "/" + 150;
-    //FIM: ATUALIZEI EM 08/09 - DUYLLYAN
 
     const card = document.createElement("div");
     card.setAttribute("class", "cards")
@@ -140,5 +159,17 @@ botaoEnviar.addEventListener('click', function(event){
     card.appendChild(img)
     card.appendChild(text)
     
-    divCards.appendChild(card) 
+    divCards.appendChild(card)
+
+    let obj = {titulo: perfil.value, imagem: userImg, comentario: comentario.value};
+
+    arrayObjetos.push(obj);
+
+    localStorage.setItem('card', JSON.stringify(arrayObjetos));
+
+    //INICIO: ATUALIZEI EM 08/09 - DUYLLYAN
+    //zerando o contador do textarea
+    comentario.value = "";
+    divCaracteres.innerHTML = comentario.value.length + "/" + 150;
+    //FIM: ATUALIZEI EM 08/09 - DUYLLYAN
 })
