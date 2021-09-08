@@ -8,6 +8,8 @@ const botaoEnviar = document.getElementById("botaoEnviar")
 let calendar = document.getElementById("calendar");
 //selecionar a div que conterá os cards
 let divCards = document.getElementById("cards")
+//selecionar o numero de caracteres da textarea
+let divCaracteres = document.getElementById("numCaracteres");
 
 
 /* INICIO: ATUALIZEI EM 07/09 - FELIPE */
@@ -79,11 +81,9 @@ botaoEnviar.addEventListener("click", (event) => {//event recebe o click
 /* OBS: usando apenas um evento (keydown, keypress, keyup) ele não conta o primeiro caracter
 por isso foram add dois eventos e assim é contado corretamente*/
 comentario.addEventListener("keydown", function(){
-    let divCaracteres = document.getElementById("numCaracteres");
     divCaracteres.innerHTML = comentario.value.length + "/" + 150;
 })
 comentario.addEventListener("keyup", function(){
-    let divCaracteres = document.getElementById("numCaracteres");
     divCaracteres.innerHTML = comentario.value.length + "/" + 150;
 })
 
@@ -115,6 +115,12 @@ perfil.addEventListener('change', event => {
 /* Criar cards - 07/09 - Dâmares */
 botaoEnviar.addEventListener('click', function(event){
     event.preventDefault();
+
+    //INICIO: ATUALIZEI EM 08/09 - DUYLLYAN
+    //zerando o contador do textarea
+    comentario.value = "";
+    divCaracteres.innerHTML = comentario.value.length + "/" + 150;
+    //FIM: ATUALIZEI EM 08/09 - DUYLLYAN
 
     const card = document.createElement("div");
     card.setAttribute("class", "cards")
