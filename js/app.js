@@ -7,28 +7,45 @@ const botaoEnviar = document.getElementById("botaoEnviar")
 //selecionando elemento calendario
 let calendar = document.getElementById("calendar");
 
-//Função para manipulação de dados dos campos do formulário ao carregar a página
+
+/* INICIO: ATUALIZEI EM 07/09 - FELIPE */
+//propriedade para executar quaisquer funções ao carregar a página
 window.onload = _ => {
+
+    defineCalendario();
+
+}
+
+//Funções gerais
+//Função para criar calendário e ajustar sua data atual
+const defineCalendario = _ => {
 
     /* Ajustando data inicial do calentádio */
     let today = new Date()
 
     let year = today.getFullYear();
-    /* Definindo getMonth() + 1 pois, o método returna os meses a partir do index 0 */
-    let month = today.getMonth()+1;
+    let month = today.getMonth();
     let day = today.getDate();
 
     /* Adiciona 0 na frente de numeros menores que 10*/
     day < 10 ? day = '0'+ day : null;
     month < 10 ? month = '0'+ month : null;
 
-    let minDate= year+"-"+month+"-"+day;
-/*    Teste para definição de periodo personalizado: let maxDate= year+"-"+month+"-"+30; */
-    calendar.setAttribute("min", minDate)
-/*  Teste para definição de periodo personalizado: calendar.setAttribute("max", maxDate) */
-    calendar.value=minDate
-    console.log(calendar);
-}
+    /* Definindo valor do input do calendario para a data atual */
+    calendar.value = `${day}/${month}/${year}`;
+
+    /*Instanciando objeto calendário com opções personalizadas*/
+    flatpickr(calendar, {
+        /* Definindo data minima e data padrão como data atual */
+        minDate: new Date(year, month, day),
+        defaultDate: new Date(year, month, day),
+
+        /* Definindo formato de data para pt-BR */
+        dateFormat: "d/m/Y",
+        "locale": "pt"
+    });
+    
+}/* FIM: ATUALIZEI EM 07/09 - FELIPE */
 
 //função para verificação se está vazio
 botaoEnviar.addEventListener("click", (event) => {//event recebe o click

@@ -1,10 +1,10 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    /*fontes*/
-    font-family: 'Caveat', cursive;
-    font-family: 'Lemonada', cursive;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /*fontes*/
+  font-family: "Caveat", cursive;
+  font-family: "Lemonada", cursive;
 }
 
 /*o padrão fica 10px*/
@@ -22,45 +22,44 @@ html {
 }
 
 /*estilizando o form*/
-form{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: stretch;
-    margin: 3rem auto;
-    max-width: 90%; 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  margin: 3rem auto;
+  max-width: 90%;
 }
 
 /*cor do body*/
-body{
-    background-color: var(--darkBlue);
+body {
+  background-color: var(--darkBlue);
 }
 
-::placeholder{
+::placeholder {
   /* coloquei uma opacidade pra ficar mais discreto */
   color: #f2a999b0;
-    /* color: var(--salmon); */
+  /* color: var(--salmon); */
 }
-
 
 /* FAVOR ESPECIFICAR QUAL IMG IRÁ SER ESTILAZADA PARA NÃO MODIFICAR OS OUTROS ELEMENTOS */
 /* REMOVI O IMG DOS SELECIONADO ABAIXO - Peter*/
-input, select{
-    width: 100%;
-    margin: 1rem 0;
-    padding: .7rem;
-    font-size: 1.5rem;
-    background-color: var(--darkBlue);
-    color: var(--salmon);
-    /* DAQUI P/ BAIXO ACRESCENTEI EM 05/09 - DÃMARES */
-    border: none; 
-    border-bottom: 1px solid var(--lightPink);
-    outline: none;
+input,
+select {
+  width: 100%;
+  margin: 1rem 0;
+  padding: 0.7rem;
+  font-size: 1.5rem;
+  background-color: var(--darkBlue);
+  color: var(--salmon);
+  /* DAQUI P/ BAIXO ACRESCENTEI EM 05/09 - DÃMARES */
+  border: none;
+  border-bottom: 1px solid var(--lightPink);
+  outline: none;
 }
 
-
 /* ACRESCENTEI EM 05/09 - DÃMARES */
-textarea{
+textarea {
   background-color: var(--darkBlue);
   width: 100%;
   margin: 1rem 0;
@@ -75,40 +74,38 @@ textarea{
 }
 
 /* ACRESCENTEI EM 05/09 - DÃMARES */
-input:hover, 
-textarea:hover{
-    background-color: #3d5870; /* cor não é darkblue */
+input:hover,
+textarea:hover {
+  background-color: #3d5870; /* cor não é darkblue */
 }
 
-
-label, h3{
-    font-size: 1.7rem; /* diminui o tamanho que era de 2rem - DÃMARES */
-    color: var(--lightPink);
+label,
+h3 {
+  font-size: 1.7rem; /* diminui o tamanho que era de 2rem - DÃMARES */
+  color: var(--lightPink);
 }
-
 
 /* AREA DO PERFIL DA VIAGEM */
 /* TODO: DECIDIR O TAMANHO DA IMG */
 .preview {
-    border: solid 2px var(--lightPink);
-    width: 100%; 
-    height: 300px;
-    /* desabilitei essa configuração abaixo em px pq estava fazendo a div ficar fora de enquadramento
+  border: solid 2px var(--lightPink);
+  width: 100%;
+  height: 300px;
+  /* desabilitei essa configuração abaixo em px pq estava fazendo a div ficar fora de enquadramento
     na página e coloquei em porcentagem - Dâmares 05/09 */
-    /* width: 500px;*/
+  /* width: 500px;*/
 }
 
-#userImg{
-    width: 100%;
-    height: 100%;
-    /* object-fit: cover; */
-    /* overflow: hidden; */
+#userImg {
+  width: 100%;
+  height: 100%;
+  /* object-fit: cover; */
+  /* overflow: hidden; */
 }
-
 
 /* ACRESCENTEI EM 05/09 - DÃMARES */
 /* botões */
-button{
+button {
   width: 80px;
   padding: 8px;
   margin: 3px;
@@ -118,37 +115,40 @@ button{
   color: var(--darkBlue);
 }
 
-button:hover{
+button:hover {
   background-color: var(--lightPink);
 }
 
-.btn{
+.btn {
   text-align: center;
 }
-
 
 /* Dâmares 05/09 */
 /* breakpoint a partir de tablets e notebooks */
 @media screen and (min-width: 769px) {
-  main{
+  main {
     display: flex;
     flex-direction: row;
   }
-  #sectionForm{
+  #sectionForm {
     width: 30%;
   }
-  #cards{
+  #cards {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
     width: 70%;
     background-color: var(--lightPink);
-    padding: 20px;  
+    padding: 20px;
     position: relative;
   }
-  form{
+  form {
     display: flex;
     flex-direction: column;
+  }
+
+  #ui-datepicker-div {
+    width: 200px;
   }
 }

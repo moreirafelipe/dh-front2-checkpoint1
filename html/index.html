@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -11,24 +11,32 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Lemonada:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- importando componente calendário flatpickr em português-BR via cdn -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/pt.js"></script>
+
 </head>
 
 <body>
-    <main> <!-- coloquei toda a página dentro do main - Dâmares -->
-        <section id="sectionForm"> <!-- coloquei o formulário dentro de uma section - Dâmares-->
+    <main>
+        <!-- coloquei toda a página dentro do main - Dâmares -->
+        <section id="sectionForm">
+            <!-- coloquei o formulário dentro de uma section - Dâmares-->
             <form>
                 <!--Div do nome-->
                 <div>
                     <label for="nome">Nome Completo</label>
                     <input type="text" name="nome" id="campoNome" placeholder="Digite seu nome">
                 </div>
-        
+
                 <!--Div do email-->
                 <div>
                     <label for="email">E-mail</label>
                     <input type="email" name="email" id="campoEmail" placeholder="Digite seu email">
                 </div>
-        
+
                 <!--div do perfil-->
                 <div id="perfilContainer">
                     <label for="perfil">Perfil</label>
@@ -42,24 +50,25 @@
                         <option value="outro">Outro</option>
                     </select>
                 </div>
-        
+
                 <!--div imagem-->
                 <div class="preview">
                     <img id="userImg" src="../assets/mala.jpeg" alt="">
                 </div>
-        
+
                 <!--Marcar viagem-->
                 <div>
                     <label for="" id="dataViagem">Data da viagem</label>
-                    <input type="date" id="calendar">
+                    <!--  <input type="date" id="calendar"> -->
+                    <div id="elementCalendar"><input type="text" id="calendar" /></div>
                 </div>
-        
+
                 <!--Observações sobre a viagem-->
                 <div>
                     <h3>Digite aqui seu comentário</h3>
                     <textarea name="" id="" cols="30" rows="5" maxlength="150"></textarea>
                 </div>
-        
+
                 <!--Botões-->
                 <div class="btn">
                     <button type="submit" id="botaoEnviar">Enviar</button>
@@ -67,12 +76,13 @@
                 </div>
             </form>
         </section>
-    
+
         <!--Cards-->
         <section id="cards">
-    
+
         </section>
     </main>
     <script src="../js/app.js"></script>
 </body>
+
 </html>
