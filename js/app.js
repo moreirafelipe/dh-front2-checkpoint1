@@ -6,6 +6,8 @@ const comentario = document.querySelector("textarea")
 const botaoEnviar = document.getElementById("botaoEnviar")
 //selecionando elemento calendario
 let calendar = document.getElementById("calendar");
+//selecionar a div que conterá os cards
+let divCards = document.getElementById("cards")
 
 
 /* INICIO: ATUALIZEI EM 07/09 - FELIPE */
@@ -70,7 +72,22 @@ botaoEnviar.addEventListener("click", (event) => {//event recebe o click
 //evitar de colocar datas passadas
 // console.log(Date().toString())
 
-//adicionar contador regressivo na textarea
+
+//adicionar contador regressivo na textarea 
+
+/* CONTAR NUMERO DE CARACTERES - 07/09 - Dâmares */
+/* OBS: usando apenas um evento (keydown, keypress, keyup) ele não conta o primeiro caracter
+por isso foram add dois eventos e assim é contado corretamente*/
+comentario.addEventListener("keydown", function(){
+    let divCaracteres = document.getElementById("numCaracteres");
+    divCaracteres.innerHTML = comentario.value.length + "/" + 150;
+})
+comentario.addEventListener("keyup", function(){
+    let divCaracteres = document.getElementById("numCaracteres");
+    divCaracteres.innerHTML = comentario.value.length + "/" + 150;
+})
+
+
 
 //PERFIL
 const perfil = document.getElementById('perfil');
@@ -88,7 +105,34 @@ perfil.addEventListener('change', event => {
         //     document.getElementById('perfilContainer').appendChild(novoPerfil)
     }
     else if (element != '') {
-        userImg.src = `/assets/${element}.jpg`
+        userImg.src = `../assets/${element}.jpg`
         userImg.alt = `Fotografia de uma viagem à ${element}`
     }
+})
+
+
+
+/* Criar cards - 07/09 - Dâmares */
+botaoEnviar.addEventListener('click', function(event){
+    event.preventDefault();
+
+    const card = document.createElement("div");
+    card.setAttribute("class", "cards")
+
+    const title = document.createElement("h2");
+    title.setAttribute("class", "tituloCard")
+    title.innerHTML = perfil.value
+
+    const img = document.createElement("img")
+    img.setAttribute("src", userImg.src)
+
+    const text = document.createElement("p");
+    text.setAttribute("class", "paragCard")
+    text.innerHTML = comentario.value
+    
+    card.appendChild(title)
+    card.appendChild(img)
+    card.appendChild(text)
+    
+    divCards.appendChild(card) 
 })

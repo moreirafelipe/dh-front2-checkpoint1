@@ -59,7 +59,7 @@ select {
 }
 
 /* ACRESCENTEI EM 05/09 - DÃMARES */
-textarea {
+textarea{
   background-color: var(--darkBlue);
   width: 100%;
   margin: 1rem 0;
@@ -69,8 +69,8 @@ textarea {
   padding: 10px;
   border: none;
   border-bottom: 1px solid var(--lightPink);
-  outline: none;
-  margin-bottom: 25px;
+  outline: none; 
+  resize: none;
 }
 
 /* ACRESCENTEI EM 05/09 - DÃMARES */
@@ -78,6 +78,16 @@ input:hover,
 textarea:hover {
   background-color: #3d5870; /* cor não é darkblue */
 }
+
+/* ACRESCENTEI EM 07/09 - DÃMARES */
+/* div do contador de caracteres */
+#numCaracteres{
+  color: white;
+  font-size: 1.3rem;
+  text-align: right;
+  margin-bottom: 15px;
+}
+
 
 label,
 h3 {
@@ -123,32 +133,91 @@ button:hover {
   text-align: center;
 }
 
-/* Dâmares 05/09 */
-/* breakpoint a partir de tablets e notebooks */
-@media screen and (min-width: 769px) {
+
+/* Cards */
+/* Dâmares 07/09 */
+section#cards{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--lightPink);
+}
+
+.cards{
+  display: flex;
+  flex-direction: column;
+  background-color: #f7e9dd;
+  width: 85%;
+  height: 450px;
+  margin: 10px;
+  padding: 15px;
+  font-size: 1.5rem;
+  border-radius: 6px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.1) ;
+}
+.tituloCard{
+  text-align: center;
+}
+.paragCard{
+  max-width: 300px;
+  padding-top: 15px;
+} 
+
+
+
+/* BREAKPOINTS */
+/* Dâmares 07/09 */
+
+/* tablets e larger smartphones */
+@media screen and (min-width: 481px) {
   main {
     display: flex;
     flex-direction: row;
   }
   #sectionForm {
-    width: 30%;
+    width: 45%;
   }
-  #cards {
-    display: flex;
+  section#cards{
+    justify-content: center;
+    background-color: var(--lightPink);
+    width: 55%;
+  }
+  .cards{
+    width: 85%;
+  }
+} 
+
+
+/* larger tablets in landscape e notebooks */
+@media screen and (min-width: 769px) {
+  #sectionForm {
+    width: 40%;
+  }
+  section#cards{
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: center;
-    width: 70%;
-    background-color: var(--lightPink);
-    padding: 20px;
-    position: relative;
+    justify-content: space-around;
+    width: 60%;
   }
-  form {
-    display: flex;
-    flex-direction: column;
+  .cards{
+    width: 300px;
+    height: 410px;
   }
+}
 
-  #ui-datepicker-div {
-    width: 200px;
+
+/* Larger desktops and monitors */
+@media screen and (min-width: 1280px) {
+  #sectionForm {
+    width: 30%;
+  }
+  section#cards{
+    justify-content: center;
+    align-items: flex-start;
+    width: 70%;
+  }
+  .cards{
+    width: 350px;
+    height: 450px;
   }
 }
