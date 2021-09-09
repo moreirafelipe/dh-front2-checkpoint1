@@ -151,7 +151,7 @@ perfil.addEventListener('change', event => {
 
         /* Escutador de eventos que define imagem do preview ao tirar foco do campo de url */
         /* Ajustado para quando o usuario cola a url com teclado ou mouse */
-        novoPerfil.addEventListener( 'focusout' ,event => {
+        novoPerfil.addEventListener( 'focusout', _ => {
             userImg.setAttribute("src", `${novoPerfil.value}`)
         })
     }
