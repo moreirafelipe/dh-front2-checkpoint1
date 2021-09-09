@@ -11,6 +11,8 @@ let divCards = document.getElementById("cards")
 //selecionar o numero de caracteres da textarea
 let divCaracteres = document.getElementById("numCaracteres");
 
+let cardCheck = document.getElementById('cardcheck')
+
 /* INICIO: ATUALIZEI EM 07/09 - FELIPE */
 //propriedade para executar quaisquer funções ao carregar a página
 window.onload = _ => {
@@ -160,11 +162,14 @@ botaoEnviar.addEventListener('click', function(event){
     /* Definindo objeto com dados do card atual */
     let newObj = {titulo: perfil.value, imagem: userImg.src, comentario: comentario.value};
 
-    /* Verifica se o localStorage esta vazio para decidir se deve recuperar dados do localStorage */
-    if(localStorage.length == 0) {
+    /* Verifica se o localStorage esta vazio e se o usuario quer memorizar cards para decidir se deve recuperar dados do localStorage */
+    if(localStorage.length == 0 && cardCheck.checked == true) {
         arrayObjetos.push(newObj)
 
-    } else {    
+        /* Insere o array temporario convertido em JSON no localStorage */
+        localStorage.setItem('card', JSON.stringify(arrayObjetos));
+
+    } else if (cardCheck.checked == true) {    
         /* Recupera dados dos cards antigos do localStorage para renderizar na tela e insere cada um no array com forEach*/ 
         let getObj = JSON.parse(localStorage.getItem('card'));
         getObj.forEach(element => {
@@ -175,10 +180,11 @@ botaoEnviar.addEventListener('click', function(event){
         arrayObjetos.push(newObj)
         /* Apaga localStorage para receber array atualizado com cards antigos e novos */
         localStorage.removeItem('card');
+
+        /* Insere o array temporario convertido em JSON no localStorage */
+        localStorage.setItem('card', JSON.stringify(arrayObjetos));
     }
 
-    /* Insere o array temporario convertido em JSON no localStorage */
-    localStorage.setItem('card', JSON.stringify(arrayObjetos));
     /* FIM ATUALIZEI - 08/09 - FELIPE - localStorage */
 
     //INICIO: ATUALIZEI EM 08/09 - DUYLLYAN

@@ -54,12 +54,12 @@ select {
   color: var(--salmon);
   /* DAQUI P/ BAIXO ACRESCENTEI EM 05/09 - DÃMARES */
   border: none;
-  border-bottom: .1rem solid var(--lightPink);
+  border-bottom: 0.1rem solid var(--lightPink);
   outline: none;
 }
 
 /* ACRESCENTEI EM 05/09 - DÃMARES */
-textarea{
+textarea {
   background-color: var(--darkBlue);
   width: 100%;
   margin: 1rem 0;
@@ -68,10 +68,26 @@ textarea{
   color: var(--salmon);
   padding: 1rem;
   border: none;
-  border-bottom: .1rem solid var(--lightPink);
-  outline: none; 
+  border-bottom: 0.1rem solid var(--lightPink);
+  outline: none;
   resize: none;
 }
+
+/* ACRESCENTEI EM 08/09 - FELIPE */
+
+.memorize {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 5rem 0;
+}
+
+.memorize input {
+  width: 10%;
+  transform: scale(1.5);
+}
+
+/* FIM - ACRESCENTEI EM 08/09 - FELIPE */
 
 /* ACRESCENTEI EM 05/09 - DÃMARES */
 input:hover,
@@ -81,13 +97,12 @@ textarea:hover {
 
 /* ACRESCENTEI EM 07/09 - DÃMARES */
 /* div do contador de caracteres */
-#numCaracteres{
+#numCaracteres {
   color: white;
   font-size: 1.3rem;
   text-align: right;
   margin-bottom: 1.5rem;
 }
-
 
 label,
 h3 {
@@ -104,7 +119,7 @@ h3 {
 /* AREA DO PERFIL DA VIAGEM */
 /* TODO: DECIDIR O TAMANHO DA IMG */
 .preview {
-  border: solid .2rem var(--lightPink);
+  border: solid 0.2rem var(--lightPink);
   width: 100%;
   height: 30rem;
   /* desabilitei essa configuração abaixo em px pq estava fazendo a div ficar fora de enquadramento
@@ -123,10 +138,10 @@ h3 {
 /* botões */
 button {
   width: 8rem;
-  padding: .8rem;
-  margin: .3rem;
+  padding: 0.8rem;
+  margin: 0.3rem;
   border-style: none;
-  border-radius: .5rem;
+  border-radius: 0.5rem;
   background-color: var(--salmon);
   color: var(--darkBlue);
 }
@@ -139,17 +154,16 @@ button:hover {
   text-align: center;
 }
 
-
 /* Cards */
 /* Dâmares 07/09 */
-section#cards{
+section#cards {
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: var(--lightPink);
 }
 
-.cards{
+.cards {
   display: flex;
   flex-direction: column;
   background-color: #f7e9dd;
@@ -158,18 +172,16 @@ section#cards{
   margin: 1rem;
   padding: 1.5rem;
   font-size: 1.5rem;
-  border-radius: .6rem;
-  box-shadow: .2rem .2rem .2rem .1rem rgba(0, 0, 0, 0.1) ;
+  border-radius: 0.6rem;
+  box-shadow: 0.2rem 0.2rem 0.2rem 0.1rem rgba(0, 0, 0, 0.1);
 }
-.tituloCard{
+.tituloCard {
   text-align: center;
 }
-.paragCard{
+.paragCard {
   max-width: 30rem;
   padding-top: 1.5rem;
-} 
-
-
+}
 
 /* BREAKPOINTS */
 /* Dâmares 07/09 */
@@ -183,46 +195,44 @@ section#cards{
   #sectionForm {
     width: 45%;
   }
-  section#cards{
+  section#cards {
     justify-content: center;
     background-color: var(--lightPink);
     width: 55%;
   }
-  .cards{
+  .cards {
     width: 85%;
   }
-} 
-
+}
 
 /* larger tablets in landscape e notebooks */
 @media screen and (min-width: 769px) {
   #sectionForm {
     width: 40%;
   }
-  section#cards{
+  section#cards {
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: space-around;
     width: 60%;
   }
-  .cards{
+  .cards {
     width: 30rem;
     height: 41rem;
   }
 }
-
 
 /* Larger desktops and monitors */
 @media screen and (min-width: 1280px) {
   #sectionForm {
     width: 30%;
   }
-  section#cards{
+  section#cards {
     justify-content: center;
     align-items: flex-start;
     width: 70%;
   }
-  .cards{
+  .cards {
     width: 35rem;
     height: 45rem;
   }
