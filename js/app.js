@@ -10,15 +10,18 @@ let calendar = document.getElementById("calendar");
 let divCards = document.getElementById("cards")
 //selecionar o numero de caracteres da textarea
 let divCaracteres = document.getElementById("numCaracteres");
-
+//Selecionar checkbox de memorizar cartao
 let cardCheck = document.getElementById('cardcheck')
+//PERFIL
+const perfil = document.getElementById('perfil');
+let userImg = document.getElementById('userImg')
 
 /* INICIO: ATUALIZEI EM 07/09 - FELIPE */
 //propriedade para executar quaisquer funções ao carregar a página
 window.onload = _ => {
 
     defineCalendario();
-    mantemCards();
+    localStorage.length != 0 ? mantemCards() : null;
 
 }
 
@@ -51,6 +54,8 @@ const criarCards = (titulo, imrUrl, comentario) => {
 const mantemCards = () => {
 
     let obj = JSON.parse(localStorage.getItem('card'));
+
+    console.log(obj)
 
     obj.forEach((element) => {
 
@@ -126,28 +131,34 @@ comentario.addEventListener("keyup", function(){
     divCaracteres.innerHTML = comentario.value.length + "/" + 150;
 })
 
-
-
-//PERFIL
-const perfil = document.getElementById('perfil');
-const userImg = document.getElementById('userImg')
-
+//ATUALIZEI INSERIR IMAGENS ALEATORIAS POR URL - FELIPE - 09/09
 //TODO: CONSERTAR O ERRO QUE CRUIA VARIOS INPUTS QUANDO 'OUTROS' é selecionado
 //TODO: Ajustar o ALT
 perfil.addEventListener('change', event => {
     let element = event.target.value
 
     if (element == 'outro') {
-        // const novoPerfil = document.createElement('input')
-        //     novoPerfil.placeholder = 'Digite o perfil'
-        //     novoPerfil.id = 'novoPerfil'
-        //     document.getElementById('perfilContainer').appendChild(novoPerfil)
+        let novaUrl = document.getElementById('urlUser')
+        let label = document.createElement('label')
+        let labelText = document.createTextNode("URL")
+        label.append(labelText)
+
+        let novoPerfil = document.createElement('input')
+        novoPerfil.setAttribute('type', 'URL')
+        novoPerfil.setAttribute('placeholder', 'Informe a url da sua imagem')
+        novaUrl.appendChild(label)
+        novaUrl.appendChild(novoPerfil)
+        
+        novoPerfil.onkeyup = () => {
+  /*           console.log(novoPerfil.value) */
+            userImg.setAttribute("src", `${novoPerfil.value}`)
+        }
     }
     else if (element != '') {
         userImg.src = `../assets/${element}.jpg`
         userImg.alt = `Fotografia de uma viagem à ${element}`
     }
-})
+})//FIM - ATUALIZEI INSERIR IMAGENS ALEATORIAS POR URL - FELIPE - 09/09
 
 /* Criar cards - 07/09 - Dâmares */
 /* ATUALIZEI - 08/09 - FELIPE - localStorage */
@@ -160,7 +171,7 @@ botaoEnviar.addEventListener('click', function(event){
     /* Definindo array local temporário para ser inicicializado a cada inserção de card */
     let arrayObjetos = [];
     /* Definindo objeto com dados do card atual */
-    let newObj = {titulo: perfil.value, imagem: userImg.src, comentario: comentario.value};
+    let newObj = {"titulo": perfil.value, "imagem": userImg.src, "comentario": comentario.value};
 
     /* Verifica se o localStorage esta vazio e se o usuario quer memorizar cards para decidir se deve recuperar dados do localStorage */
     if(localStorage.length == 0 && cardCheck.checked == true) {
