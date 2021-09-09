@@ -148,11 +148,12 @@ perfil.addEventListener('change', event => {
         novoPerfil.setAttribute('placeholder', 'Informe a url da sua imagem')
         novaUrl.appendChild(label)
         novaUrl.appendChild(novoPerfil)
-        
-        novoPerfil.onkeyup = () => {
-  /*           console.log(novoPerfil.value) */
+
+        /* Escutador de eventos que define imagem do preview ao tirar foco do campo de url */
+        /* Ajustado para quando o usuario cola a url com teclado ou mouse */
+        novoPerfil.addEventListener( 'focusout' ,event => {
             userImg.setAttribute("src", `${novoPerfil.value}`)
-        }
+        })
     }
     else if (element != '') {
         userImg.src = `../assets/${element}.jpg`
