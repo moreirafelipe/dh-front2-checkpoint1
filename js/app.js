@@ -13,8 +13,10 @@ let divCaracteres = document.getElementById("numCaracteres");
 //Selecionar checkbox de memorizar cartao
 let cardCheck = document.getElementById('cardcheck')
 //PERFIL
-const perfil = document.getElementById('perfil');
+let perfil = document.getElementById('perfil');
 let userImg = document.getElementById('userImg')
+
+
 
 /* INICIO: ATUALIZEI EM 07/09 - FELIPE */
 //propriedade para executar quaisquer funções ao carregar a página
@@ -138,6 +140,7 @@ perfil.addEventListener('change', event => {
     let element = event.target.value
 
     if (element == 'outro') {
+
         let novaUrl = document.getElementById('urlUser')
         let label = document.createElement('label')
         let labelText = document.createTextNode("URL")
@@ -148,12 +151,36 @@ perfil.addEventListener('change', event => {
         novoPerfil.setAttribute('placeholder', 'Informe a url da sua imagem')
         novaUrl.appendChild(label)
         novaUrl.appendChild(novoPerfil)
+         
 
         /* Escutador de eventos que define imagem do preview ao tirar foco do campo de url */
         /* Ajustado para quando o usuario cola a url com teclado ou mouse */
         novoPerfil.addEventListener( 'focusout', _ => {
             userImg.setAttribute("src", `${novoPerfil.value}`)
         })
+
+        
+        // Dâmares - input para informar o destino - início 09/09
+        // captura a div no html que conterá o input para nome do destino
+        let localUser = document.getElementById('localUser')
+
+        // cria label para input do destino
+        let labelDestino = document.createElement('label')
+        let labelText2 = document.createTextNode("Destino")
+        labelDestino.append(labelText2)
+
+        // criar input para digitar o nome do destino
+        let destino = document.createElement('input')
+        destino.setAttribute('type', 'text')
+        destino.setAttribute('placeholder', 'Digite o nome do destino')
+        
+        localUser.appendChild(labelDestino)
+        localUser.appendChild(destino)
+
+        //O destino digitado é armazenado na varíavel perfil
+        perfil = destino;
+        // Fim - criação do input para digitar nome do destino - Dâmares - 09/09
+
     }
     else if (element != '') {
         userImg.src = `../assets/${element}.jpg`
@@ -203,6 +230,7 @@ botaoEnviar.addEventListener('click', function(event){
     //zerando o contador do textarea
     comentario.value = "";
     divCaracteres.innerHTML = comentario.value.length + "/" + 150;
+
     //FIM: ATUALIZEI EM 08/09 - DUYLLYAN
 })
 

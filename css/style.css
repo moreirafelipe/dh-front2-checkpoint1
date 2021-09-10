@@ -52,7 +52,6 @@ select {
   font-size: 1.5rem;
   background-color: var(--darkBlue);
   color: var(--salmon);
-  /* DAQUI P/ BAIXO ACRESCENTEI EM 05/09 - DÃMARES */
   border: none;
   border-bottom: 0.1rem solid var(--lightPink);
   outline: none;
@@ -79,7 +78,7 @@ textarea {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin: 5rem 0;
+  margin: 0 0 3rem;
 }
 
 .memorize input {
@@ -119,19 +118,17 @@ h3 {
 /* AREA DO PERFIL DA VIAGEM */
 /* TODO: DECIDIR O TAMANHO DA IMG */
 .preview {
-  border: solid 0.2rem var(--lightPink);
   width: 100%;
-  height: 30rem;
-  /* desabilitei essa configuração abaixo em px pq estava fazendo a div ficar fora de enquadramento
-    na página e coloquei em porcentagem - Dâmares 05/09 */
-  /* width: 500px;*/
+  margin: 1rem 0;
+
 }
 
 #userImg {
+  border: solid 0.2rem var(--lightPink);
   width: 100%;
-  height: 100%;
-  /* object-fit: cover; */
-  /* overflow: hidden; */
+ 
+  /* object-fit: cover;  */
+  /* overflow: hidden;  */
 }
 
 /* ACRESCENTEI EM 05/09 - DÃMARES */
