@@ -16,6 +16,8 @@ let cardCheck = document.getElementById('cardcheck')
 const perfil = document.getElementById('perfil');
 let userImg = document.getElementById('userImg')
 
+let novaUrl = document.getElementById('urlUser');
+
 /* INICIO: ATUALIZEI EM 07/09 - FELIPE */
 //propriedade para executar quaisquer funções ao carregar a página
 window.onload = _ => {
@@ -137,8 +139,10 @@ comentario.addEventListener("keyup", function(){
 perfil.addEventListener('change', event => {
     let element = event.target.value
 
-    if (element == 'outro') {
-        let novaUrl = document.getElementById('urlUser')
+    /* Verifica se usuario escolheu perfil de viajem como outro e se a div de nova url não tem inpus*/
+    /* Isto evita que um novo input seja criado sempre que ele escolher a opção outro */
+    if (element == 'outro' && novaUrl.innerHTML == '') {
+        novaUrl = document.getElementById('urlUser')
         let label = document.createElement('label')
         let labelText = document.createTextNode("URL")
         label.append(labelText)
@@ -151,11 +155,34 @@ perfil.addEventListener('change', event => {
 
         /* Escutador de eventos que define imagem do preview ao tirar foco do campo de url */
         /* Ajustado para quando o usuario cola a url com teclado ou mouse */
-        novoPerfil.addEventListener( 'focusout', _ => {
-            userImg.setAttribute("src", `${novoPerfil.value}`)
+        novoPerfil.addEventListener('focusout', _ => {       
+
+            /* Se o usuário deixar o campo de url vazio, a imagem padrão ficará */
+            if(novoPerfil.value.length == 0) {
+                userImg.src="../assets/mala.jpeg"
+    
+            } else {
+
+                /* Se o campo não for vazio, uma requisição http é feita via API JS de consulta - fetch */
+                /* Se o link retornar como válido, ele define a imagem, senão, ele define imagem invállida */
+                fetch(novoPerfil.value, { method: 'HEAD' })
+                .then(response => {
+                    if (response.ok) {
+                        userImg.setAttribute("src", `${novoPerfil.value}`)
+                    } else {
+                        userImg.setAttribute("src", "../assets/invalida.jpg")
+                    }
+                }).catch(err => {
+                    userImg.setAttribute("src", "../assets/invalida.jpg")
+                    console.log(err)
+                });
+            }
         })
     }
+
+    /* Se usuario escolher opção diferente de "outro", ele apaga o input de url */
     else if (element != '') {
+        novaUrl.innerHTML='';
         userImg.src = `../assets/${element}.jpg`
         userImg.alt = `Fotografia de uma viagem à ${element}`
     }
