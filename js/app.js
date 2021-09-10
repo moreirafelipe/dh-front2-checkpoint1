@@ -13,9 +13,9 @@ let divCaracteres = document.getElementById("numCaracteres");
 //Selecionar checkbox de memorizar cartao
 let cardCheck = document.getElementById('cardcheck')
 //PERFIL
-const perfil = document.getElementById('perfil');
+let perfil = document.getElementById('perfil');
 let userImg = document.getElementById('userImg')
-
+//Guardando div de input para url de imagem personalizada
 let novaUrl = document.getElementById('urlUser');
 
 /* INICIO: ATUALIZEI EM 07/09 - FELIPE */
@@ -141,7 +141,7 @@ perfil.addEventListener('change', event => {
 
     /* Verifica se usuario escolheu perfil de viajem como outro e se a div de nova url não tem inpus*/
     /* Isto evita que um novo input seja criado sempre que ele escolher a opção outro */
-    if (element == 'outro' && novaUrl.innerHTML == '') {
+    if (element == 'outro') {
         novaUrl = document.getElementById('urlUser')
         let label = document.createElement('label')
         let labelText = document.createTextNode("URL")
@@ -152,6 +152,7 @@ perfil.addEventListener('change', event => {
         novoPerfil.setAttribute('placeholder', 'Informe a url da sua imagem')
         novaUrl.appendChild(label)
         novaUrl.appendChild(novoPerfil)
+         
 
         /* Escutador de eventos que define imagem do preview ao tirar foco do campo de url */
         /* Ajustado para quando o usuario cola a url com teclado ou mouse */
@@ -178,11 +179,35 @@ perfil.addEventListener('change', event => {
                 });
             }
         })
+
+        
+        // Dâmares - input para informar o destino - início 09/09
+        // captura a div no html que conterá o input para nome do destino
+        let localUser = document.getElementById('localUser')
+
+        // cria label para input do destino
+        let labelDestino = document.createElement('label')
+        let labelText2 = document.createTextNode("Destino")
+        labelDestino.append(labelText2)
+
+        // criar input para digitar o nome do destino
+        let destino = document.createElement('input')
+        destino.setAttribute('type', 'text')
+        destino.setAttribute('placeholder', 'Digite o nome do destino')
+        
+        localUser.appendChild(labelDestino)
+        localUser.appendChild(destino)
+
+        //O destino digitado é armazenado na varíavel perfil
+        perfil = destino;
+        // Fim - criação do input para digitar nome do destino - Dâmares - 09/09
+
     }
 
     /* Se usuario escolher opção diferente de "outro", ele apaga o input de url */
     else if (element != '') {
         novaUrl.innerHTML='';
+        localUser.innerHTML='';
         userImg.src = `../assets/${element}.jpg`
         userImg.alt = `Fotografia de uma viagem à ${element}`
     }
@@ -230,6 +255,7 @@ botaoEnviar.addEventListener('click', function(event){
     //zerando o contador do textarea
     comentario.value = "";
     divCaracteres.innerHTML = comentario.value.length + "/" + 150;
+
     //FIM: ATUALIZEI EM 08/09 - DUYLLYAN
 })
 
