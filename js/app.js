@@ -129,8 +129,6 @@ botaoEnviar.addEventListener("click", (event) => {//event recebe o click
 })
 
 
-
-
 /* CONTAR NUMERO DE CARACTERES - 07/09 - Dâmares */
 /* OBS: usando apenas um evento (keydown, keypress, keyup) ele não conta o primeiro caracter
 por isso foram add dois eventos e assim é contado corretamente*/

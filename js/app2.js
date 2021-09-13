@@ -2,7 +2,7 @@ const inputs = document.querySelectorAll('input')
 let nome = document.getElementById('campoNome')
 let email = document.getElementById('campoEmail')
 let password = document.getElementById('password')
-const loginCheck = document.getElementById('loginCheck')
+const loginChecked = document.getElementById('loginChecked')
 const btnLogin = document.getElementById('fazerLogin')
 
 
@@ -13,7 +13,7 @@ window.onload = _ => {
 
 /* armazenar dados de login no local storage */
 btnLogin.addEventListener("click",function(){
-    if(loginCheck.checked == true){
+    if(loginChecked.checked == true){
         let loginDates = {nome: nome.value, email: email.value, password: password.value}
         localStorage.setItem('login', JSON.stringify(loginDates));
     }

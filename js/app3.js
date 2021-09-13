@@ -6,7 +6,12 @@ let msgConfirmacao = document.getElementById('confirmEnvio')
 
 recuperarLogin.addEventListener("click", function(event){
     event.preventDefault()
-    email.value = "";
-    msgConfirmacao.style.margin = '50px 0'
-    msgConfirmacao.innerHTML = 'E-mail para recuperação de senha enviado !';
+    if(email.value == ""){
+        alert("Por favor, informe o e-mail")
+    }else{
+        email.value = "";
+        msgConfirmacao.style.margin = '50px 0'
+        msgConfirmacao.innerHTML = 'E-mail para recuperação de senha enviado !';
+    }
+    
 })
