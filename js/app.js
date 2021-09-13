@@ -166,9 +166,9 @@ perfil.addEventListener('change', event => {
 
                 /* Se o campo não for vazio, uma requisição http é feita via API JS de consulta - fetch */
                 /* Se o link retornar como válido, ele define a imagem, senão, ele define imagem invállida */
-                fetch(novoPerfil.value, { method: 'HEAD' })
-                .then(response => {
-                    if (response.ok) {
+                fetch(novoPerfil.value, { method: 'HEAD' })//possivel tbm usar GET
+                .then(res => {
+                    if (res.ok) {
                         userImg.setAttribute("src", `${novoPerfil.value}`)
                     } else {
                         userImg.setAttribute("src", "../assets/invalida.jpg")
