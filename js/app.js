@@ -17,6 +17,11 @@ let perfil = document.getElementById('perfil');
 let userImg = document.getElementById('userImg')
 //Guardando div de input para url de imagem personalizada
 let novaUrl = document.getElementById('urlUser');
+//atribui um valor como parâmetro para a função deletarCard() e que servirá para comparar c/ o index dele no array
+let indexCard=0;
+
+
+
 
 /* INICIO: ATUALIZEI EM 07/09 - FELIPE */
 //propriedade para executar quaisquer funções ao carregar a página
@@ -24,13 +29,12 @@ window.onload = _ => {
 
     defineCalendario();
     localStorage.length != 0 ? mantemCards() : null;
-
 }
 
 //Funções gerais
 //Função que cria cards e mantem cards - ATUALIZEI - 08/09 - FELIPE
-const criarCards = (titulo, imrUrl, comentario) => {
-
+const criarCards = (titulo, imrUrl, comentario, id) => {
+   
     const card = document.createElement("div");
     card.setAttribute("class", "cards")
 
@@ -45,9 +49,25 @@ const criarCards = (titulo, imrUrl, comentario) => {
     text.setAttribute("class", "paragCard")
     text.innerHTML = comentario
     
+
+  
+    //botão para deletar o card
+    const btnDeletarCard = document.createElement("button")
+    btnDeletarCard.setAttribute('type', 'submit')
+    btnDeletarCard.setAttribute("id", "btnCard")
+
+    // evento onclick que recebe o valor da variável indexCard como parâmetro
+    btnDeletarCard.setAttribute('onclick', "excluirCard("+ id+")")
+    
+    const textButton = document.createTextNode("X")
+    btnDeletarCard.append(textButton)
+    card.appendChild(btnDeletarCard)
+
+  
     card.appendChild(title)
     card.appendChild(img)
     card.appendChild(text)
+    
     
     divCards.appendChild(card)
 }
@@ -57,12 +77,11 @@ const mantemCards = () => {
 
     let obj = JSON.parse(localStorage.getItem('card'));
 
-    console.log(obj)
-
+   /*  indexCard=0; */
     obj.forEach((element) => {
 
         /* Chamando função para criar os cards com dados recuperados do localStorage*/
-        criarCards(element.titulo, element.imagem, element.comentario);
+        criarCards(element.titulo, element.imagem, element.comentario, element.id);
 
     });
 }//FIM - Função que cria cards e mantem cards - ATUALIZEI - 08/09 - FELIPE
@@ -94,8 +113,9 @@ const defineCalendario = _ => {
         dateFormat: "d/m/Y",
         "locale": "pt"
     });
-    
 }/* FIM: ATUALIZEI EM 07/09 - FELIPE */
+
+
 
 //função para verificação se está vazio
 botaoEnviar.addEventListener("click", (event) => {//event recebe o click
@@ -108,20 +128,8 @@ botaoEnviar.addEventListener("click", (event) => {//event recebe o click
     })
 })
 
-//função para limitar a quantidade de caracteres
-// comentario.addEventListener("keyup", (event)=>{
-//     let conteudoComentario = comentario.value
-//     if(conteudoComentario.length > 1){
-//         console.log(conteudoComentario)
-//         event.target.preventDefault()
-//     }
-// })
-
-//evitar de colocar datas passadas
-// console.log(Date().toString())
 
 
-//adicionar contador regressivo na textarea 
 
 /* CONTAR NUMERO DE CARACTERES - 07/09 - Dâmares */
 /* OBS: usando apenas um evento (keydown, keypress, keyup) ele não conta o primeiro caracter
@@ -132,6 +140,8 @@ comentario.addEventListener("keydown", function(){
 comentario.addEventListener("keyup", function(){
     divCaracteres.innerHTML = comentario.value.length + "/" + 150;
 })
+
+
 
 //ATUALIZEI INSERIR IMAGENS ALEATORIAS POR URL - FELIPE - 09/09
 //TODO: CONSERTAR O ERRO QUE CRUIA VARIOS INPUTS QUANDO 'OUTROS' é selecionado
@@ -201,7 +211,6 @@ perfil.addEventListener('change', event => {
         //O destino digitado é armazenado na varíavel perfil
         perfil = destino;
         // Fim - criação do input para digitar nome do destino - Dâmares - 09/09
-
     }
 
     /* Se usuario escolher opção diferente de "outro", ele apaga o input de url */
@@ -213,18 +222,24 @@ perfil.addEventListener('change', event => {
     }
 })//FIM - ATUALIZEI INSERIR IMAGENS ALEATORIAS POR URL - FELIPE - 09/09
 
-/* Criar cards - 07/09 - Dâmares */
+
+
+
+/* CRIAR CARDS - 07/09 - Dâmares */
 /* ATUALIZEI - 08/09 - FELIPE - localStorage */
 botaoEnviar.addEventListener('click', function(event){
     event.preventDefault();
 
-    /* Chamando função para criar os cards */
-    criarCards(perfil.value, userImg.src, comentario.value);
-
     /* Definindo array local temporário para ser inicicializado a cada inserção de card */
     let arrayObjetos = [];
+
+    indexCard+=1;
+
     /* Definindo objeto com dados do card atual */
-    let newObj = {"titulo": perfil.value, "imagem": userImg.src, "comentario": comentario.value};
+    let newObj = {"id": indexCard, "titulo": perfil.value, "imagem": userImg.src, "comentario": comentario.value};
+    
+      /* Chamando função para criar os cards */
+      criarCards(perfil.value, userImg.src, comentario.value, indexCard);
 
     /* Verifica se o localStorage esta vazio e se o usuario quer memorizar cards para decidir se deve recuperar dados do localStorage */
     if(localStorage.length == 0 && cardCheck.checked == true) {
@@ -259,4 +274,21 @@ botaoEnviar.addEventListener('click', function(event){
     //FIM: ATUALIZEI EM 08/09 - DUYLLYAN
 })
 
-console.log(this.localStorage.length)
+
+/* Função para deletar o card individualmente - 10/09*/
+function excluirCard(id){
+    let getArray= JSON.parse(localStorage.getItem('card'))
+
+    // findIndex percorre o array e compara o valor do index de cada objeto com o parâmetro passado
+    let index = getArray.findIndex(element => element.id == id)
+
+    // splice deleta um elemento do array e retorna o array modificado. Recebe dois parâmetros: posição do primeiro item a ser excluído e o número de elementos a serem excluídos.
+    getArray.splice(index, 1)
+
+    // retorna o novo array para o localstorage
+    let arrayJson = JSON.stringify(getArray)
+    localStorage.setItem('card', arrayJson)
+
+    // recarrega a página após a exclusão do card
+    document.location.reload(true);
+}
