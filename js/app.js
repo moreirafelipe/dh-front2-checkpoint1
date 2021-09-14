@@ -30,7 +30,9 @@ window.onload = _ => {
     defineCalendario(); 
 
     let getObj = JSON.parse(localStorage.getItem('login'));
+    /* Recuperar cards da memoria se o ultimo card da memoria tiver id valido */
     getObj[getObj.length - 1].id != null ? mantemCards() : null;
+    /* Atualiza indice de IDs de cards quando o ultimo card da memoria for valido*/
     getObj[getObj.length - 1].lastIndex != null ? indexCard =  getObj[getObj.length - 1].lastIndex : null;
 }
 
@@ -262,9 +264,11 @@ botaoEnviar.addEventListener('click', function(event){
         let getObj = JSON.parse(localStorage.getItem('login'));
         indexCard =  getObj[getObj.length - 1].lastIndex + 1;
 
-        /* Define o  */
+        /* cria o card que usuario esta escolhendo */
         let newObj = {"nome": getObj[getObj.length - 1].nome, "email": getObj[getObj.length - 1].email, "password": getObj[getObj.length - 1].password ,"id": indexCard, "titulo": perfil.value, "imagem": userImg.src, "lastIndex": indexCard, "comentario": comentario.value}
 
+        /* Atualiza ultimo ID em todos os objetos e coloca no array para transformar em JSON */
+        /* Todos os obj recebem o lastindex pois, independentemente de qual sobre apos exclusao, o ultimo ID sera recuperado */
         getObj.forEach(element => {
             element.lastIndex = indexCard;
             arrayObjetos.push(element);
