@@ -7,7 +7,7 @@
   font-family: "Lemonada", cursive;
 }
 
-   /*usar cor como variável*/
+/*usar cor como variável*/
 :root {
   --darkBlue: #1b3c59;
   --gray: #b0bfb5;
@@ -15,34 +15,34 @@
   --salmon: #f2a999;
   --pink: #f28177;
 }
-  
-  /*o padrão fica 10px*/
+
+/*o padrão fica 10px*/
 html {
   font-size: 62.5%;
 }
 
- /*cor do body*/
- body {
+/*cor do body*/
+body {
   background-color: var(--lightPink);
 }
 
-main{
-    display: flex;
-    align-items: center;
-    align-content: center;
+main {
+  display: flex;
+  align-items: center;
+  align-content: center;
 }
 
 /*estilizando o form*/
 form {
-  padding: 40px;
+  padding: 4rem;
   align-items: center;
-  border-radius: 20px;
-  margin: 3rem auto;
-  width: 500px;
+  border-radius: 2rem;
+  margin: 8rem auto;
+  width: 90%;
   background-color: var(--darkBlue);
   box-shadow: 0.3rem 0.3rem 0.3rem 0.2rem rgba(34, 21, 21, 0.3);
 }
-  
+
 ::placeholder {
   color: #f2a999b0;
 }
@@ -62,7 +62,7 @@ select {
 
 input:hover,
 textarea:hover {
-  background-color: #3d5870; 
+  background-color: #3d5870;
 }
 
 label,
@@ -71,19 +71,19 @@ h3 {
   color: var(--lightPink);
 }
 
-a:hover{
+a:hover {
   color: var(--salmon);
 }
 
-#labelCheck{
-  font-size: 1.5rem; 
+#labelChecked {
+  font-size: 1.5rem;
   color: white;
 }
 
-#options{
+#options {
   width: 100%;
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
@@ -98,36 +98,60 @@ button {
   color: var(--darkBlue);
   font-size: 1.5rem;
 }
-  
+
 button:hover {
   background-color: var(--lightPink);
 }
 
-.btn{
+.btn {
   text-align: center;
   margin-top: 3rem;
 }
 
-#loginCheck{
-  width: 30px;
+/* input de checked */
+#loginCheck {
+  width: 3rem;
 }
 
-
 /*  TELA DE RECUPERAÇÃO DE SENHA */
-p{
+
+/* div com a msg de confirmação de envio de e-mail */
+#confirmEnvio {
+  text-align: center;
+}
+
+/* paragrafo c/ mensagem de e-mail enviado */
+p {
   font-size: 1.8rem;
   color: white;
 }
 
-a{
-  font-size: 1.5rem; 
+/* div do link de voltar para login */
+.linkVoltar {
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* link voltar */
+a {
+  font-size: 1.5rem;
   color: var(--lightPink);
   color: white;
   text-decoration: none;
 }
 
-.linkVoltar{
-  margin-top: 0.5rem;
-  text-align: center;
+/* BREAKPOINTS */
+
+/* tablets e larger smartphones */
+@media screen and (min-width: 481px) {
+  form {
+    width: 45rem;
+  }
 }
 
+/* larger tablets in landscape e notebooks */
+@media screen and (min-width: 769px) {
+  form {
+    width: 50rem;
+  }
+}

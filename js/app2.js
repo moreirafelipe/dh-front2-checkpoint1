@@ -2,7 +2,7 @@ const inputs = document.querySelectorAll('input')
 let nome = document.getElementById('campoNome')
 let email = document.getElementById('campoEmail')
 let password = document.getElementById('password')
-const loginCheck = document.getElementById('loginCheck')
+const loginChecked = document.getElementById('loginChecked')
 const btnLogin = document.getElementById('fazerLogin')
 
 
