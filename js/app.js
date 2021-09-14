@@ -80,7 +80,7 @@ const mantemCards = () => {
 
     let getObj = JSON.parse(localStorage.getItem('login'));
 
-   /*  indexCard=0; */
+    /* Percorre array do local storage para criar cards */
     getObj.forEach((element) => {
 
         /* Chamando função para criar os cards com dados recuperados do localStorage*/
@@ -224,17 +224,16 @@ perfil.addEventListener('change', event => {
 })//FIM - ATUALIZEI INSERIR IMAGENS ALEATORIAS POR URL - FELIPE - 09/09
 
 /* CRIAR CARDS - 07/09 - Dâmares */
-/* ATUALIZEI - 08/09 - FELIPE - localStorage */
+/* ATUALIZEI - 13/09 - FELIPE - IDs automaticos */
 botaoEnviar.addEventListener('click', function(event){
     event.preventDefault();
 
-    /* Definindo array local temporário para ser inicicializado a cada inserção de card */
+    /* Definindo array local temporário para ser inicicializado a cada inserção de card quando não há cards memorizados*/
     let arrayObjetos = [];
 
+    /* Iniciando contador de indices usado quando usuario cria cards */
+    /* O valor abaixo (0 + 1) é usado no primeiro card, do contrário, o id do card é o lastIndex atualizado em cada objeto(card) */
     indexCard+=1;
-
-    /* Definindo objeto com dados do card atual */
-    /* let newObj = {"id": indexCard, "titulo": perfil.value, "imagem": userImg.src, "comentario": comentario.value}; */
 
      /* Recupedando array de objetos atual*/
      let getObj = JSON.parse(localStorage.getItem('login'));
@@ -242,7 +241,8 @@ botaoEnviar.addEventListener('click', function(event){
       /* Chamando função para criar os cards */
       criarCards(perfil.value, userImg.src, comentario.value, indexCard);
 
-    /* Verifica se o localStorage esta vazio e se o usuario quer memorizar cards para decidir se deve recuperar dados do localStorage */
+    /* Verifica se o usuário já instanciou algum card antes e se o usuario quer memorizar cards para decidir se deve recuperar dados do localStorage */
+    /* Se for primeiro card, ele define tudo do zero */
     if(getObj[getObj.length - 1].id==null && cardCheck.checked == true) {
         getObj[0].id = indexCard;
         getObj[0].titulo = perfil.value;
@@ -257,11 +257,12 @@ botaoEnviar.addEventListener('click', function(event){
         indexCard = getObj[getObj - 1].id;
 
     } else if (cardCheck.checked == true) {   
-    
-        /* Recupera dados dos cards antigos do localStorage para renderizar na tela e insere cada um no array com forEach*/ 
+        /* Se não for primeiro card */
+        /* Recupera id atual no lastIndex de cada objeto, cria proximo objeto com dados de login atual e insere obj antigos e novo no array com forEach*/ 
         let getObj = JSON.parse(localStorage.getItem('login'));
         indexCard =  getObj[getObj.length - 1].lastIndex + 1;
 
+        /* Define o  */
         let newObj = {"nome": getObj[getObj.length - 1].nome, "email": getObj[getObj.length - 1].email, "password": getObj[getObj.length - 1].password ,"id": indexCard, "titulo": perfil.value, "imagem": userImg.src, "lastIndex": indexCard, "comentario": comentario.value}
 
         getObj.forEach(element => {
@@ -278,10 +279,11 @@ botaoEnviar.addEventListener('click', function(event){
         /* Insere o array temporario convertido em JSON no localStorage */
         localStorage.setItem('login', JSON.stringify(arrayObjetos));
 
+        /* Atualiza o indice temporario como o lastIndex passado em cada objeto */
         indexCard = arrayObjetos[arrayObjetos - 1].id;
     }
 
-    /* FIM ATUALIZEI - 08/09 - FELIPE - localStorage */
+    /* FIM ATUALIZEI - 13/09 - FELIPE - IDs automaticos */
 
     //INICIO: ATUALIZEI EM 08/09 - DUYLLYAN
     //zerando o contador do textarea
@@ -299,7 +301,7 @@ function excluirCard(id){
     // findIndex percorre o array e compara o valor do index de cada objeto com o parâmetro passado
     let index = getArray.findIndex(element => element.id == id)
 
-    // splice deleta um elemento do array e retorna o array modificado. Recebe dois parâmetros: posição do primeiro item a ser excluído e o número de elementos a serem excluídos.
+    /* Ao deletar o ultimo card, ele guarda os dados de login, e o lastIndex para dar continuidade nos IDs ao reiniciar o app*/
     
     if(getArray.length > 1) {
         getArray.splice(index, 1)

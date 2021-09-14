@@ -7,6 +7,7 @@ const btnLogin = document.getElementById('fazerLogin')
 
 
 window.onload = _ => {
+    /* Se houver login salvo, ele carrega dados do usuario no form de login*/
     localStorage.length != 0 ?  mantemLogin() : null;
 }
 
@@ -14,13 +15,20 @@ window.onload = _ => {
 /* armazenar dados de login no local storage */
 btnLogin.addEventListener("click",function(){
 
+    /* Array temporario para criar/ atualizar objetos */
     let localArray = [];
+
+    /* Cria novo n]objeto card */
+    /* Contém dados de login, e dados do card por login realizado */
+    /* No primeiro login de sessão, dados de card da sessão são nulos */
 
     let newData = {"nome": nome.value, "email": email.value, "password": password.value ,"id": null, "titulo": null, "imagem": null, "comentario": null, lastIndex: null}
 
+    /* Se usuario quer guardar login, e nunca salvou dados, ele só coloca novo login no localStorage */
     if(loginChecked.checked == true && localStorage.length == 0){
         localArray.push(newData);
         localStorage.setItem('login', JSON.stringify(localArray));
+        /* Atualiza LocalStorage com dados antigos e novo login de sessão caso não seja primeiro login */
     } else if (loginChecked.checked == true && loginDates.length == 0) {
         let loginData = JSON.parse(localStorage.getItem('login'));
         loginData.push(newData);
