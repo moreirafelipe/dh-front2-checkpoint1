@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../img/icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Travelsbook</title>
+    <!--Linkei fonte-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Lemonada:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- importando componente calendário flatpickr em português-BR via cdn -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://npmcdn.com/flatpickr/dist/flatpickr.min.js"></script>
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/pt.js"></script>
+
+</head>
+
+<body>
+    <main>
+        <!-- coloquei toda a página dentro do main - Dâmares -->
+        <section id="sectionForm">
+            <!-- coloquei o formulário dentro de uma section - Dâmares-->
+            <form>
+                <!--div do perfil-->
+                <div id="perfilContainer">
+                    <label for="perfil">Perfil</label>
+                    <select name="perfil" id="perfil">
+                        <option value="" selected>Selecione um perfil</option>
+                        <option value="Montanha">Montanha</option>
+                        <option value="Praia">Praia</option>
+                        <option value="Frio">Frio</option>
+                        <option value="Eco">Ecoturismo</option>
+                        <option value="Historico">Histórico</option>
+                        <option value="outro">Outro</option>
+                    </select>
+                </div>
+
+                <div id="urlUser"></div>
+
+                <!-- div com o input para informar o nome do destino -->
+                <div id="localUser"></div>
+
+                <!--div imagem-->
+                <div class="preview">
+                    <img id="userImg" src="../assets/mala.jpeg" alt="">
+                </div>
+
+                <!--Marcar viagem-->
+                <div>
+                    <label for="" id="dataViagem">Data da viagem</label>
+                    <input type="text" id="calendar" />
+                </div>
+
+                <!--Observações sobre a viagem-->
+                <div>
+                    <h3>Digite aqui seu comentário</h3>
+                    <textarea name="" id="" cols="30" rows="5" maxlength="150"></textarea>
+                    <div id="numCaracteres">0/150</div>
+                </div>
+
+                <!-- Checkbox que guarda opção do usuario -->
+                <div class="memorize">
+                    <label for="cardcheck">Desejo memorizar este card</label>
+                    <input type="checkbox" id="cardcheck" name="cardcheck">
+                </div>
+
+                <!--Botões-->
+                <div class="btn">
+                    <button type="submit" id="botaoEnviar">Enviar</button>
+                    <button type="reset" id="botaoCancelar">Cancelar</button>
+                </div>
+            </form>
+        </section>
+
+        <!--Cards-->
+        <section id="cards">
+            <div id="headerFormulario">
+                <a href="index.html">Logout</a>
+            </div>
+        </section>
+    </main>
+    <script src="../js/app.js"></script>
+</body>
+
+</html>
