@@ -150,7 +150,7 @@ comentario.addEventListener("keyup", function(){
 //TODO: CONSERTAR O ERRO QUE CRUIA VARIOS INPUTS QUANDO 'OUTROS' é selecionado
 //TODO: Ajustar o ALT
 perfil.addEventListener('change', event => {
-    let element = event.target.value
+    let element = event.target.value.toLowerCase();
 
     /* Verifica se usuario escolheu perfil de viajem como outro e se a div de nova url não tem inpus*/
     /* Isto evita que um novo input seja criado sempre que ele escolher a opção outro */
