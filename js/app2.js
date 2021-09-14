@@ -18,10 +18,10 @@ btnLogin.addEventListener("click",function(){
 
     let newData = {"nome": nome.value, "email": email.value, "password": password.value ,"id": null, "titulo": null, "imagem": null, "comentario": null, lastIndex: null}
 
-    if(loginCheck.checked == true && localStorage.length == 0){
+    if(loginChecked.checked == true && localStorage.length == 0){
         localArray.push(newData);
         localStorage.setItem('login', JSON.stringify(localArray));
-    } else if (loginCheck.checked == true && loginDates.length == 0) {
+    } else if (loginChecked.checked == true && loginDates.length == 0) {
         let loginData = JSON.parse(localStorage.getItem('login'));
         loginData.push(newData);
         localStorage.setItem('login', JSON.stringify(loginData));
