@@ -27,8 +27,11 @@ let indexCard=0;
 //propriedade para executar quaisquer funções ao carregar a página
 window.onload = _ => {
 
-    defineCalendario();
-    localStorage.length != 0 ? mantemCards() : null;
+    defineCalendario(); 
+
+    let getObj = JSON.parse(localStorage.getItem('login'));
+    getObj[getObj.length - 1].id != null ? mantemCards() : null;
+    getObj[getObj.length - 1].lastIndex != null ? indexCard =  getObj[getObj.length - 1].lastIndex : null;
 }
 
 //Funções gerais
@@ -75,10 +78,10 @@ const criarCards = (titulo, imrUrl, comentario, id) => {
 //Função para recuperar dados do usuario ao fechar página
 const mantemCards = () => {
 
-    let obj = JSON.parse(localStorage.getItem('card'));
+    let getObj = JSON.parse(localStorage.getItem('login'));
 
    /*  indexCard=0; */
-    obj.forEach((element) => {
+    getObj.forEach((element) => {
 
         /* Chamando função para criar os cards com dados recuperados do localStorage*/
         criarCards(element.titulo, element.imagem, element.comentario, element.id);
@@ -222,9 +225,6 @@ perfil.addEventListener('change', event => {
     }
 })//FIM - ATUALIZEI INSERIR IMAGENS ALEATORIAS POR URL - FELIPE - 09/09
 
-
-
-
 /* CRIAR CARDS - 07/09 - Dâmares */
 /* ATUALIZEI - 08/09 - FELIPE - localStorage */
 botaoEnviar.addEventListener('click', function(event){
@@ -236,32 +236,51 @@ botaoEnviar.addEventListener('click', function(event){
     indexCard+=1;
 
     /* Definindo objeto com dados do card atual */
-    let newObj = {"id": indexCard, "titulo": perfil.value, "imagem": userImg.src, "comentario": comentario.value};
-    
+    /* let newObj = {"id": indexCard, "titulo": perfil.value, "imagem": userImg.src, "comentario": comentario.value}; */
+
+     /* Recupedando array de objetos atual*/
+     let getObj = JSON.parse(localStorage.getItem('login'));
+
       /* Chamando função para criar os cards */
       criarCards(perfil.value, userImg.src, comentario.value, indexCard);
 
     /* Verifica se o localStorage esta vazio e se o usuario quer memorizar cards para decidir se deve recuperar dados do localStorage */
-    if(localStorage.length == 0 && cardCheck.checked == true) {
-        arrayObjetos.push(newObj)
+    if(getObj[getObj.length - 1].id==null && cardCheck.checked == true) {
+        getObj[0].id = indexCard;
+        getObj[0].titulo = perfil.value;
+        getObj[0].imagem = userImg.src;
+        getObj[0].comentario = comentario.value;
+        getObj[0].lastIndex = indexCard;
+
+        localStorage.removeItem('login');
 
         /* Insere o array temporario convertido em JSON no localStorage */
-        localStorage.setItem('card', JSON.stringify(arrayObjetos));
+        localStorage.setItem('login', JSON.stringify(getObj));
+        indexCard = getObj[getObj - 1].id;
 
-    } else if (cardCheck.checked == true) {    
+    } else if (cardCheck.checked == true) {   
+    
         /* Recupera dados dos cards antigos do localStorage para renderizar na tela e insere cada um no array com forEach*/ 
-        let getObj = JSON.parse(localStorage.getItem('card'));
+        let getObj = JSON.parse(localStorage.getItem('login'));
+        indexCard =  getObj[getObj.length - 1].lastIndex + 1;
+
+        let newObj = {"nome": getObj[getObj.length - 1].nome, "email": getObj[getObj.length - 1].email, "password": getObj[getObj.length - 1].password ,"id": indexCard, "titulo": perfil.value, "imagem": userImg.src, "lastIndex": indexCard, "comentario": comentario.value}
+
         getObj.forEach(element => {
+            element.lastIndex = indexCard;
             arrayObjetos.push(element);
         });
 
         /* Insere dados do novo card no array de objetos temporario */
         arrayObjetos.push(newObj)
+
         /* Apaga localStorage para receber array atualizado com cards antigos e novos */
-        localStorage.removeItem('card');
+        localStorage.removeItem('login');
 
         /* Insere o array temporario convertido em JSON no localStorage */
-        localStorage.setItem('card', JSON.stringify(arrayObjetos));
+        localStorage.setItem('login', JSON.stringify(arrayObjetos));
+
+        indexCard = arrayObjetos[arrayObjetos - 1].id;
     }
 
     /* FIM ATUALIZEI - 08/09 - FELIPE - localStorage */
@@ -277,17 +296,25 @@ botaoEnviar.addEventListener('click', function(event){
 
 /* Função para deletar o card individualmente - 10/09*/
 function excluirCard(id){
-    let getArray= JSON.parse(localStorage.getItem('card'))
+    let getArray= JSON.parse(localStorage.getItem('login'))
 
     // findIndex percorre o array e compara o valor do index de cada objeto com o parâmetro passado
     let index = getArray.findIndex(element => element.id == id)
 
     // splice deleta um elemento do array e retorna o array modificado. Recebe dois parâmetros: posição do primeiro item a ser excluído e o número de elementos a serem excluídos.
-    getArray.splice(index, 1)
-
+    
+    if(getArray.length > 1) {
+        getArray.splice(index, 1)
+    } else {
+        getArray[0].id = null;
+        getArray[0].titulo = null;
+        getArray[0].imagem = null;
+        getArray[0].comentario = null;
+    }
+    
     // retorna o novo array para o localstorage
     let arrayJson = JSON.stringify(getArray)
-    localStorage.setItem('card', arrayJson)
+    localStorage.setItem('login', arrayJson)
 
     // recarrega a página após a exclusão do card
     document.location.reload(true);

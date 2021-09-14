@@ -7,15 +7,24 @@ const btnLogin = document.getElementById('fazerLogin')
 
 
 window.onload = _ => {
-    mantemLogin();
+    localStorage.length != 0 ?  mantemLogin() : null;
 }
 
 
 /* armazenar dados de login no local storage */
 btnLogin.addEventListener("click",function(){
-    if(loginCheck.checked == true){
-        let loginDates = {nome: nome.value, email: email.value, password: password.value}
-        localStorage.setItem('login', JSON.stringify(loginDates));
+
+    let localArray = [];
+
+    let newData = {"nome": nome.value, "email": email.value, "password": password.value ,"id": null, "titulo": null, "imagem": null, "comentario": null, lastIndex: null}
+
+    if(loginCheck.checked == true && localStorage.length == 0){
+        localArray.push(newData);
+        localStorage.setItem('login', JSON.stringify(localArray));
+    } else if (loginCheck.checked == true && loginDates.length == 0) {
+        let loginData = JSON.parse(localStorage.getItem('login'));
+        loginData.push(newData);
+        localStorage.setItem('login', JSON.stringify(loginData));
     }
 })
 
@@ -23,9 +32,9 @@ btnLogin.addEventListener("click",function(){
 /* recuperar dados de login do localstorage */
 const mantemLogin = () => {
     let loginDates = JSON.parse(localStorage.getItem('login'));
-    nome.value = loginDates.nome
-    email.value = loginDates.email
-    password.value = loginDates.password
+    nome.value = loginDates[loginDates.length - 1].nome
+    email.value = loginDates[loginDates.length - 1].email
+    password.value = loginDates[loginDates.length - 1].password
 }
 
 

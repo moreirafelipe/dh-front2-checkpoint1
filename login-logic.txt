@@ -1,0 +1,3 @@
+1º login  - sem cards - getObj.id == null
+2º login - com cards - getObj.id != null
+2º login - sem cards = getObj.id != null
