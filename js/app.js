@@ -127,7 +127,7 @@ botaoEnviar.addEventListener("click", (event) => {//event recebe o click
     inputs.forEach(element => {
         if (element.value == "") {
             event.preventDefault()
-            // alert("Preencha corretamente") decidir o que vamos fazer, se vai ser div, texto, etc..
+            // alert("Preencha corretamente") decidir o que vamos fazer, se vai ser div, texto, etc...
             //pode ser um createelement, appendchild e depois um p
         }
     })
@@ -173,7 +173,7 @@ perfil.addEventListener('change', event => {
 
             /* Se o usuário deixar o campo de url vazio, a imagem padrão ficará */
             if(novoPerfil.value.length == 0) {
-                userImg.src="./assets/mala.jpeg"
+                userImg.src="../assets/mala.jpeg"
     
             } else {
 
@@ -184,10 +184,10 @@ perfil.addEventListener('change', event => {
                     if (res.ok) {
                         userImg.setAttribute("src", `${novoPerfil.value}`)
                     } else {
-                        userImg.setAttribute("src", "./assets/invalida.jpg")
+                        userImg.setAttribute("src", "../assets/invalida.jpg")
                     }
                 }).catch(err => {
-                    userImg.setAttribute("src", "./assets/invalida.jpg")
+                    userImg.setAttribute("src", "../assets/invalida.jpg")
                     console.log(err)
                 });
             }
@@ -220,7 +220,7 @@ perfil.addEventListener('change', event => {
     else if (element != '') {
         novaUrl.innerHTML='';
         localUser.innerHTML='';
-        userImg.src = `./assets/${element}.jpg`
+        userImg.src = `../assets/${element}.jpg`
         userImg.alt = `Fotografia de uma viagem à ${element}`
     }
 })//FIM - ATUALIZEI INSERIR IMAGENS ALEATORIAS POR URL - FELIPE - 09/09
