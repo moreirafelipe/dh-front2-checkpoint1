@@ -4,6 +4,8 @@ const inputs = document.querySelectorAll('input')
 const comentario = document.querySelector("textarea")
 //peguei o botao enviar pelo ID
 const botaoEnviar = document.getElementById("botaoEnviar")
+//botão cancelar
+const btnCancelar = document.getElementById("botaoCancelar")
 //selecionando elemento calendario
 let calendar = document.getElementById("calendar");
 //selecionar a div que conterá os cards
@@ -132,6 +134,7 @@ botaoEnviar.addEventListener("click", (event) => {//event recebe o click
         }
     })
 })
+
 
 
 /* CONTAR NUMERO DE CARACTERES - 07/09 - Dâmares */
@@ -295,6 +298,14 @@ botaoEnviar.addEventListener('click', function(event){
     divCaracteres.innerHTML = comentario.value.length + "/" + 150;
 
     //FIM: ATUALIZEI EM 08/09 - DUYLLYAN
+})
+
+//Implementação do botão cancelar
+botaoCancelar.addEventListener('click', function(event){
+    event.preventDefault();
+    //zerando o contador do textarea
+    comentario.value = "";
+    divCaracteres.innerHTML = comentario.value.length + "/" + 150;
 })
 
 
