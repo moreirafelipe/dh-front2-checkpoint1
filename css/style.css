@@ -38,8 +38,7 @@ form {
 
 #headerFormulario{
  position: relative;
- margin-left: 90%;
-
+ margin-left: 80%;
 }
 
 ::placeholder {
@@ -172,11 +171,11 @@ a{
   margin-left: 88%;
   border-style: none;
   border-radius: 0.5rem;
-  background-color: #f8e2cf;
+  background-color: #f5e5d6;
   color: var(--darkBlue);
 }
 #btnCard:hover{
-  background-color: var(--salmon);
+  background-color: var(--lightPink);
 }
 
 
@@ -187,6 +186,11 @@ section#cards {
   flex-direction: column;
   align-items: center;
   background-color: var(--lightPink);
+}
+
+/* link para logout */
+#linkLogout{
+  font-size: 1.5rem;
 }
 
 .cards {
@@ -262,8 +266,14 @@ section#cards {
     width: 35rem;
     height: 45rem;
   }
-
   a{
+    font-size: 1.7rem;
+  }
+  #headerFormulario{
+    position: relative;
+    margin-left: 90%;
+   }
+   #linkLogout{
     font-size: 1.7rem;
   }
 }
