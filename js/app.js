@@ -182,7 +182,7 @@ perfil.addEventListener('change', event => {
 
                 /* Se o campo não for vazio, uma requisição http é feita via API JS de consulta - fetch */
                 /* Se o link retornar como válido, ele define a imagem, senão, ele define imagem invállida */
-                fetch(novoPerfil.value, { method: 'GET' })//possivel tbm usar GET
+                fetch(novoPerfil.value, { method: 'HEAD'})
                 .then(res => {
                     if (res.ok) {
                         userImg.setAttribute("src", `${novoPerfil.value}`)
@@ -273,7 +273,16 @@ botaoEnviar.addEventListener('click', function(event){
         indexCard =  getObj[getObj.length - 1].lastIndex + 1;
 
         /* cria o card que usuario esta escolhendo */
-        let newObj = {"nome": getObj[getObj.length - 1].nome, "email": getObj[getObj.length - 1].email, "password": getObj[getObj.length - 1].password ,"id": indexCard, "titulo": perfil.value, "imagem": userImg.src, "lastIndex": indexCard, "comentario": comentario.value}
+        let newObj = {
+            "nome": getObj[getObj.length - 1].nome,
+            "email": getObj[getObj.length - 1].email,
+            "password": getObj[getObj.length - 1].password,
+            "id": indexCard,
+            "titulo": perfil.value,
+            "imagem": userImg.src,
+            "lastIndex": indexCard,
+            "comentario": comentario.value
+        }
 
         /* Limpando campo textaarea, e contador para que o usuario final possa reinserir dados */
         comentario.value = "";
