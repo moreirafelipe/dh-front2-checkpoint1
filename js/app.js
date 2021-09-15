@@ -264,7 +264,7 @@ botaoEnviar.addEventListener('click', function(event){
 
         /* Insere o array temporario convertido em JSON no localStorage */
         localStorage.setItem('login', JSON.stringify(getObj));
-        indexCard = getObj[getObj - 1].id;
+        indexCard = getObj[getObj.length - 1].id;
 
     } else if (cardCheck.checked == true) {
         /* Se não for primeiro card */
@@ -297,7 +297,7 @@ botaoEnviar.addEventListener('click', function(event){
         localStorage.setItem('login', JSON.stringify(arrayObjetos));
 
         /* Atualiza o indice temporario como o lastIndex passado em cada objeto */
-        indexCard = arrayObjetos[arrayObjetos - 1].id;
+       /*  indexCard = getObj[getObj - 1].id; */
     }
 
     /* FIM ATUALIZEI - 13/09 - FELIPE - IDs automaticos */
