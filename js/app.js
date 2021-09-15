@@ -255,13 +255,18 @@ botaoEnviar.addEventListener('click', function(event){
         getObj[0].comentario = comentario.value;
         getObj[0].lastIndex = indexCard;
 
+        /* Limpando campo textaarea, e contador para que o usuario final possa reinserir dados */
+        comentario.value = "";
+        divCaracteres.innerHTML = comentario.value.length + "/" + 150;
+        cardCheck.checked = false;
+
         localStorage.removeItem('login');
 
         /* Insere o array temporario convertido em JSON no localStorage */
         localStorage.setItem('login', JSON.stringify(getObj));
         indexCard = getObj[getObj - 1].id;
 
-    } else if (cardCheck.checked == true) {   
+    } else if (cardCheck.checked == true) {
         /* Se não for primeiro card */
         /* Recupera id atual no lastIndex de cada objeto, cria proximo objeto com dados de login atual e insere obj antigos e novo no array com forEach*/ 
         let getObj = JSON.parse(localStorage.getItem('login'));
@@ -269,6 +274,11 @@ botaoEnviar.addEventListener('click', function(event){
 
         /* cria o card que usuario esta escolhendo */
         let newObj = {"nome": getObj[getObj.length - 1].nome, "email": getObj[getObj.length - 1].email, "password": getObj[getObj.length - 1].password ,"id": indexCard, "titulo": perfil.value, "imagem": userImg.src, "lastIndex": indexCard, "comentario": comentario.value}
+
+        /* Limpando campo textaarea, e contador para que o usuario final possa reinserir dados */
+        comentario.value = "";
+        divCaracteres.innerHTML = comentario.value.length + "/" + 150;
+        cardCheck.checked = false;
 
         /* Atualiza ultimo ID em todos os objetos e coloca no array para transformar em JSON */
         /* Todos os obj recebem o lastindex pois, independentemente de qual sobre apos exclusao, o ultimo ID sera recuperado */
@@ -294,14 +304,14 @@ botaoEnviar.addEventListener('click', function(event){
 
     //INICIO: ATUALIZEI EM 08/09 - DUYLLYAN
     //zerando o contador do textarea
-    comentario.value = "";
-    divCaracteres.innerHTML = comentario.value.length + "/" + 150;
+/*     comentario.value = "";
+    divCaracteres.innerHTML = comentario.value.length + "/" + 150; */
 
     //FIM: ATUALIZEI EM 08/09 - DUYLLYAN
 })
 
 //Implementação do botão cancelar
-botaoCancelar.addEventListener('click', function(event){
+btnCancelar.addEventListener('click', function(event){
     event.preventDefault();
     //zerando o contador do textarea
     comentario.value = "";
